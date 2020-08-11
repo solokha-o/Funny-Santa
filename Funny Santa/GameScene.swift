@@ -254,7 +254,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure brick
     func spawnBrick (atPosition position: CGPoint) -> SKSpriteNode {
-        let brick = SKSpriteNode(imageNamed: "sidewalk")
+        let brick = SKSpriteNode(imageNamed: "brick")
         brick.position = position
         brick.zPosition = 8
         addChild(brick)
