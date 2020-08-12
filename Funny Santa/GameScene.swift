@@ -31,7 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     enum  KindBrick: String {
         case first = "firstBrick"
         case main = "brick"
-        case last = "lastBruck"
+        case last = "lastBrick"
     }
     
     //create instance of Santa
@@ -60,6 +60,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastScoreUpdateTime : TimeInterval = 0.0
     //create state of game
     var stateGame = StateGame.notRunning
+    //create kindBrick instance
+    var kindBrick = KindBrick.main
     
     override func didMove(to view: SKView) {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
@@ -260,8 +262,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stateGame = .notRunning
     }
     //configure brick
-    func spawnBrick (atPosition position: CGPoint) -> SKSpriteNode {
-        let brick = SKSpriteNode(imageNamed: "brick")
+    func spawnBrick (atPosition position: CGPoint, kindBrik: KindBrick) -> SKSpriteNode {
+        let brick = SKSpriteNode(imageNamed: kindBrik.rawValue)
         brick.position = position
         brick.zPosition = 8
         addChild(brick)
@@ -334,7 +336,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     brickLevel = .high
                 }
             }
-            let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY))
+            let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBrik: kindBrick)
             farthestRightBrickX = newBrick.position.x
         }
     }
