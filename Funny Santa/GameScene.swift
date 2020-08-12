@@ -27,6 +27,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case notRunning
         case running
     }
+    //create enum for kind of brick
+    enum  KindBrick: String {
+        case first = "firstBrick"
+        case main = "brick"
+        case last = "lastBruck"
+    }
+    
     //create instance of Santa
     var santa = Santa()
     //create SKTexture array for animate santa sprite
