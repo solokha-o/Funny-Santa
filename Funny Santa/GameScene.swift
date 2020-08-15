@@ -262,8 +262,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stateGame = .notRunning
     }
     //configure brick
-    func spawnBrick (atPosition position: CGPoint, kindBrik: KindBrick) -> SKSpriteNode {
-        let brick = SKSpriteNode(imageNamed: kindBrik.rawValue)
+    func spawnBrick (atPosition position: CGPoint, kindBriсk: KindBrick) -> SKSpriteNode {
+        let brick = SKSpriteNode(imageNamed: kindBriсk.rawValue)
         brick.position = position
         brick.zPosition = 8
         addChild(brick)
@@ -295,6 +295,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     //configure building road from bricks
+    fileprivate func extractedFunc(_ brickX: CGFloat, _ brickY: CGFloat) -> SKSpriteNode {
+        return spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
+    }
+    
     func updateBricks(withScrollAmount currentScrollAmount: CGFloat) {
         // position of first brick
         var farthestRightBrickX: CGFloat = 0.0
@@ -336,7 +340,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     brickLevel = .high
                 }
             }
-            let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBrik: kindBrick)
+            let newBrick = extractedFunc(brickX, brickY)
             farthestRightBrickX = newBrick.position.x
         }
     }
