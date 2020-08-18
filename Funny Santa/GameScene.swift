@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //create enum of brick level
     enum BrickLevel: CGFloat {
         case low = 0.0
-        case high = 100.0
+        case high = 64.0
     }
     //create enum state of game
     enum StateGame {
@@ -32,6 +32,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case first = "firstBrick"
         case main = "brick"
         case last = "lastBrick"
+        case foundation = "foundationBrick"
     }
     
     //create instance of Santa
@@ -294,10 +295,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gems.remove(at: gemIndex)
         }
     }
-    //configure building road from bricks
-    fileprivate func extractedFunc(_ brickX: CGFloat, _ brickY: CGFloat) -> SKSpriteNode {
-        return spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
-    }
     
     func updateBricks(withScrollAmount currentScrollAmount: CGFloat) {
         // position of first brick
@@ -324,9 +321,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             kindBrick = .main
             let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
             farthestRightBrickX = newBrick.position.x
+            //create foundationBrick
+            if brickLevel == .high {
+                let foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
+                farthestRightBrickX = foundationBrick.position.x
+            }
             //create hole in brick
             let rundomNumber = arc4random_uniform(99)
             if rundomNumber < 2 && score > 10 {
+                var foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
+                if brickLevel == .high {
+                    farthestRightBrickX = foundationBrick.position.x
+                }
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
@@ -335,6 +341,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 kindBrick = .first
                 let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = firstBrick.position.x
+                if brickLevel == .high {
+                    foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
+                    farthestRightBrickX = foundationBrick.position.x
+                }
                 // create gem where gap
                 let randomGemYamount = CGFloat(arc4random_uniform(150))
                 let newGemY = brickY + santa.size.height + randomGemYamount
@@ -347,14 +357,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 farthestRightBrickX = lastBrick.position.x
                 if brickLevel == .high {
                     kindBrick = .first
-                    let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width * 2, y: brickY - brickLevel.rawValue), kindBriсk: kindBrick)
+                    let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: kindBrick)
                     farthestRightBrickX = firstBrick.position.x
                     brickLevel = .low
                 }
                 else if brickLevel == .low {
                     brickLevel = .high
                     kindBrick = .first
-                    let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width * 2, y: brickY + brickLevel.rawValue), kindBriсk: kindBrick)
+                    let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY + brickLevel.rawValue), kindBriсk: kindBrick)
                     farthestRightBrickX = firstBrick.position.x
                 }
             }
