@@ -93,7 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         //boost speed
-        scrollSpeed += 0.01
+        //        scrollSpeed += 0.01
         // configure time update animation
         var elapsedTime : TimeInterval = 0.0
         if let lastTimeStamp = lastUpdateTime {
@@ -317,31 +317,47 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        // create new brick with brick level
+        // create new brick with brick level and kind of brick
         while farthestRightBrickX < frame.width {
             var brickX = farthestRightBrickX + brickSize.width + 1.0
             let brickY = brickSize.height / 2.0 + brickLevel.rawValue
+            kindBrick = .main
+            let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
+            farthestRightBrickX = newBrick.position.x
             //create hole in brick
             let rundomNumber = arc4random_uniform(99)
             if rundomNumber < 2 && score > 10 {
-                let gap = 20.0 * scrollSpeed
+                kindBrick = .last
+                let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
+                farthestRightBrickX = lastBrick.position.x
+                let gap = 40.0 * scrollSpeed
                 brickX += gap
+                kindBrick = .first
+                let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
+                farthestRightBrickX = firstBrick.position.x
                 // create gem where gap
                 let randomGemYamount = CGFloat(arc4random_uniform(150))
                 let newGemY = brickY + santa.size.height + randomGemYamount
-                let newGemX = brickX - gap / 2.0
+                let newGemX = brickX - gap / 3.0
                 spawnGem(atPosition: CGPoint(x: newGemX, y: newGemY))
             }
             else if rundomNumber < 4 && score > 20 {
+                kindBrick = .last
+                let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
+                farthestRightBrickX = lastBrick.position.x
                 if brickLevel == .high {
+                    kindBrick = .first
+                    let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width * 2, y: brickY - brickLevel.rawValue), kindBriсk: kindBrick)
+                    farthestRightBrickX = firstBrick.position.x
                     brickLevel = .low
                 }
                 else if brickLevel == .low {
                     brickLevel = .high
+                    kindBrick = .first
+                    let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width * 2, y: brickY + brickLevel.rawValue), kindBriсk: kindBrick)
+                    farthestRightBrickX = firstBrick.position.x
                 }
             }
-            let newBrick = extractedFunc(brickX, brickY)
-            farthestRightBrickX = newBrick.position.x
         }
     }
     // configure update gems in scroll speed
