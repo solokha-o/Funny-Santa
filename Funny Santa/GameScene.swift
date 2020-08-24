@@ -13,6 +13,7 @@ struct PhysicsCategory {
     static let santa : UInt32 = 0x1 << 0
     static let brick : UInt32 = 0x1 << 1
     static let gem : UInt32 = 0x1 << 2
+    static let water : UInt32 = 0x1 << 3
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -94,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         //boost speed
-        //        scrollSpeed += 0.01
+//        scrollSpeed += 0.0001
         // configure time update animation
         var elapsedTime : TimeInterval = 0.0
         if let lastTimeStamp = lastUpdateTime {
@@ -128,6 +129,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // MARK:- SKPhysicsContactDelegate Methods
     func didBegin(_ contact: SKPhysicsContact) {
+        //configure contact santa & brick
         if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.brick {
             if let velocityY = santa.physicsBody?.velocity.dy {
                 if !santa.isOnGroud && velocityY < 100.0 {
@@ -136,6 +138,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             santa.isOnGroud = true
         }
+        //configure contact santa & gem
         else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.gem {
             if let gem = contact.bodyB.node as? SKSpriteNode {
                 removeGem(gem)
@@ -144,6 +147,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 run(SKAction.playSoundFileNamed("gem.wav", waitForCompletion: false))
                 updateScoreTextLable()
             }
+        }
+        //configure contact santa & water
+        else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
+            gameOver()
         }
     }
     // build frame santa on scene
@@ -279,7 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure gem
     func spawnGem(atPosition position: CGPoint) {
-        let gem = SKSpriteNode(imageNamed: "gem")
+        let gem = SKSpriteNode(imageNamed: "candy")
         gem.position = position
         gem.zPosition = 9
         addChild(gem)
@@ -294,6 +301,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let gemIndex = gems.firstIndex(of: gem) {
             gems.remove(at: gemIndex)
         }
+    }
+    //configure water
+    func spawnWater(atPosition position: CGPoint) -> SKSpriteNode {
+        let water = SKSpriteNode(imageNamed: "water")
+        water.position = position
+        water.zPosition = 8
+        addChild(water)
+        bricks.append(water)
+        let center = water.centerRect.origin
+        water.physicsBody = SKPhysicsBody(rectangleOf: water.size, center: center)
+        water.physicsBody?.affectedByGravity = false
+        water.physicsBody?.categoryBitMask = PhysicsCategory.water
+        water.physicsBody?.collisionBitMask = 0
+        return water
     }
     
     func updateBricks(withScrollAmount currentScrollAmount: CGFloat) {
@@ -316,7 +337,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         // create new brick with brick level and kind of brick
         while farthestRightBrickX < frame.width {
-            var brickX = farthestRightBrickX + brickSize.width + 1.0
+            var brickX = farthestRightBrickX + brickSize.width
             let brickY = brickSize.height / 2.0 + brickLevel.rawValue
             kindBrick = .main
             let newBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
@@ -336,8 +357,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
-                let gap = 40.0 * scrollSpeed
+                let gap = 38.0 * scrollSpeed
                 brickX += gap
+                //create water and add to line walk
+                let water = spawnWater(atPosition: CGPoint(x: brickX - brickSize.width, y: brickY - brickLevel.rawValue - 5.0))
+                farthestRightBrickX = water.position.x
                 kindBrick = .first
                 let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = firstBrick.position.x
