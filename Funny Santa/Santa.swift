@@ -24,7 +24,7 @@ class Santa: SKSpriteNode {
             physicsBody?.angularDamping = 1.0
             physicsBody?.categoryBitMask = PhysicsCategory.santa
             physicsBody?.collisionBitMask = PhysicsCategory.brick
-            physicsBody?.contactTestBitMask = PhysicsCategory.brick | PhysicsCategory.gem
+            physicsBody?.contactTestBitMask = PhysicsCategory.brick | PhysicsCategory.candy | PhysicsCategory.water
         }
     }
     //create sparks when santa run

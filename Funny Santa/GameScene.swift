@@ -12,7 +12,7 @@ import GameplayKit
 struct PhysicsCategory {
     static let santa : UInt32 = 0x1 << 0
     static let brick : UInt32 = 0x1 << 1
-    static let gem : UInt32 = 0x1 << 2
+    static let candy : UInt32 = 0x1 << 2
     static let water : UInt32 = 0x1 << 3
 }
 
@@ -54,8 +54,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let gravitySpeed : CGFloat = 1.5
     // create instance of brick level
     var brickLevel = BrickLevel.low
-    // create array of gems
-    var gems = [SKSpriteNode]()
+    // create array of candies
+    var candies = [SKSpriteNode]()
     //create instance score and best score
     var score = 0
     var highScore = 0
@@ -108,7 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // call function update node by currentScrollAmount
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
-        updateGem(withScrollAmount: currentScrollAmount)
+        updatecandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
         updateScore(withCurrentTime: currentTime)
     }
@@ -138,13 +138,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             santa.isOnGroud = true
         }
-        //configure contact santa & gem
-        else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.gem {
-            if let gem = contact.bodyB.node as? SKSpriteNode {
-                removeGem(gem)
+        //configure contact santa & candy
+        else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.candy {
+            if let candy = contact.bodyB.node as? SKSpriteNode {
+                removecandy(candy)
                 score += 50
-                //sound when take gem
-                run(SKAction.playSoundFileNamed("gem.wav", waitForCompletion: false))
+                //sound when take candy
+                run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
                 updateScoreTextLable()
             }
         }
@@ -248,8 +248,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             brick.removeFromParent()
         }
         bricks.removeAll(keepingCapacity: true)
-        for gem in gems {
-            removeGem(gem)
+        for candy in candies {
+            removecandy(candy)
         }
     }
     // configure game over
@@ -284,22 +284,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         brick.physicsBody?.collisionBitMask = 0
         return brick
     }
-    //configure gem
-    func spawnGem(atPosition position: CGPoint) {
-        let gem = SKSpriteNode(imageNamed: "candy")
-        gem.position = position
-        gem.zPosition = 9
-        addChild(gem)
-        gem.physicsBody = SKPhysicsBody(rectangleOf: gem.size, center: gem.centerRect.origin)
-        gem.physicsBody?.categoryBitMask = PhysicsCategory.gem
-        gem.physicsBody?.affectedByGravity = false
-        gems.append(gem)
+    //configure candy
+    func spawncandy(atPosition position: CGPoint) {
+        let candy = SKSpriteNode(imageNamed: "candy")
+        candy.position = position
+        candy.zPosition = 9
+        addChild(candy)
+        candy.physicsBody = SKPhysicsBody(rectangleOf: candy.size, center: candy.centerRect.origin)
+        candy.physicsBody?.categoryBitMask = PhysicsCategory.candy
+        candy.physicsBody?.affectedByGravity = false
+        candies.append(candy)
     }
-    //configure remove gem
-    func removeGem (_ gem: SKSpriteNode) {
-        gem.removeFromParent()
-        if let gemIndex = gems.firstIndex(of: gem) {
-            gems.remove(at: gemIndex)
+    //configure remove candy
+    func removecandy (_ candy: SKSpriteNode) {
+        candy.removeFromParent()
+        if let candyIndex = candies.firstIndex(of: candy) {
+            candies.remove(at: candyIndex)
         }
     }
     //configure water
@@ -369,11 +369,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
                     farthestRightBrickX = foundationBrick.position.x
                 }
-                // create gem where gap
-                let randomGemYamount = CGFloat(arc4random_uniform(150))
-                let newGemY = brickY + santa.size.height + randomGemYamount
-                let newGemX = brickX - gap / 3.0
-                spawnGem(atPosition: CGPoint(x: newGemX, y: newGemY))
+                // create candy where gap
+                let randomcandyYamount = CGFloat(arc4random_uniform(150))
+                let newcandyY = brickY + santa.size.height + randomcandyYamount
+                let newcandyX = brickX - gap / 3.0
+                spawncandy(atPosition: CGPoint(x: newcandyX, y: newcandyY))
             }
             else if rundomNumber < 4 && score > 20 {
                 kindBrick = .last
@@ -394,13 +394,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    // configure update gems in scroll speed
-    func updateGem(withScrollAmount currentScrollAmount: CGFloat) {
-        for gem in gems {
-            let gemX = gem.position.x - currentScrollAmount
-            gem.position = CGPoint(x: gemX, y: gem.position.y)
-            if gem.position.x < 0.0 {
-                removeGem(gem)
+    // configure update candies in scroll speed
+    func updatecandy(withScrollAmount currentScrollAmount: CGFloat) {
+        for candy in candies {
+            let candyX = candy.position.x - currentScrollAmount
+            candy.position = CGPoint(x: candyX, y: candy.position.y)
+            if candy.position.x < 0.0 {
+                removecandy(candy)
             }
         }
     }

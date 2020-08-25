@@ -19,7 +19,7 @@
 		DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A611C24DDDA9B001A724F /* MenuLayer.swift */; };
 		DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB5A611E24DDDAEB001A724F /* sparks.sks */; };
 		DB5A612224DDDBE3001A724F /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612024DDDBE2001A724F /* jump.wav */; };
-		DB5A612324DDDBE3001A724F /* gem.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* gem.wav */; };
+		DB5A612324DDDBE3001A724F /* candy.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* candy.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +37,7 @@
 		DB5A611C24DDDA9B001A724F /* MenuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
 		DB5A611E24DDDAEB001A724F /* sparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparks.sks; sourceTree = "<group>"; };
 		DB5A612024DDDBE2001A724F /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
-		DB5A612124DDDBE3001A724F /* gem.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gem.wav; sourceTree = "<group>"; };
+		DB5A612124DDDBE3001A724F /* candy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = candy.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 				DB5A611A24DDD9FD001A724F /* Santa.swift */,
 				DB5A610A24DDD8DC001A724F /* GameViewController.swift */,
 				DB5A611E24DDDAEB001A724F /* sparks.sks */,
-				DB5A612124DDDBE3001A724F /* gem.wav */,
+				DB5A612124DDDBE3001A724F /* candy.wav */,
 				DB5A612024DDDBE2001A724F /* jump.wav */,
 				DB5A610C24DDD8DC001A724F /* Main.storyboard */,
 				DB5A610F24DDD8DE001A724F /* Assets.xcassets */,
@@ -150,7 +150,7 @@
 				DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */,
 				DB5A610524DDD8DC001A724F /* GameScene.sks in Resources */,
 				DB5A612224DDDBE3001A724F /* jump.wav in Resources */,
-				DB5A612324DDDBE3001A724F /* gem.wav in Resources */,
+				DB5A612324DDDBE3001A724F /* candy.wav in Resources */,
 				DB5A611024DDD8DE001A724F /* Assets.xcassets in Resources */,
 				DB5A611324DDD8DE001A724F /* LaunchScreen.storyboard in Resources */,
 				DB5A610724DDD8DC001A724F /* Actions.sks in Resources */,
