@@ -28,14 +28,14 @@ class Santa: SKSpriteNode {
         }
     }
     //create sparks when santa run
-    func createSparks() {
-        if let sparksNode = SKEmitterNode(fileNamed: "sparks") {
-            sparksNode.position = CGPoint(x: 0.0, y: -50.0)
-            addChild(sparksNode)
+    func createSnowSplash() {
+        if let snowSplashsNode = SKEmitterNode(fileNamed: "SnowSplash") {
+            snowSplashsNode.position = CGPoint(x: 0.0, y: -50.0)
+            addChild(snowSplashsNode)
             let waitAction = SKAction.wait(forDuration: 0.5)
             let removeAction = SKAction.removeFromParent()
             let waitThenRemove = SKAction.sequence([waitAction, removeAction])
-            sparksNode.run(waitThenRemove)
+            snowSplashsNode.run(waitThenRemove)
         }
     }
 }

@@ -133,7 +133,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.brick {
             if let velocityY = santa.physicsBody?.velocity.dy {
                 if !santa.isOnGroud && velocityY < 100.0 {
-                    santa.createSparks()
+                    santa.createSnowSplash()
                 }
             }
             santa.isOnGroud = true
