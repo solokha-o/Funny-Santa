@@ -95,7 +95,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         //boost speed
-//        scrollSpeed += 0.0001
+        //        scrollSpeed += 0.0001
         // configure time update animation
         var elapsedTime : TimeInterval = 0.0
         if let lastTimeStamp = lastUpdateTime {
@@ -116,7 +116,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func handleTap(tapGesture: UITapGestureRecognizer) {
         if stateGame == .running {
             if santa.isOnGroud {
-                santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 260.0))
+                santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                 // sound when santa jump
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
             }
@@ -148,10 +148,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
                 updateScoreTextLable()
             }
-        }
-        //configure contact santa & water
-        else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
-            gameOver()
         }
     }
     // build frame santa on scene
@@ -259,6 +255,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             highScore = score
             updateHighScoreTextLabel()
         }
+        stateGame = .notRunning
         //display game over menu
         let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
         let menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
@@ -268,7 +265,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.name = "menuLayer"
         menuLayer.display(message: "Game over!", score: score)
         addChild(menuLayer)
-        stateGame = .notRunning
     }
     //configure brick
     func spawnBrick (atPosition position: CGPoint, kindBriсk: KindBrick) -> SKSpriteNode {
@@ -358,10 +354,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
-                let gap = 38.0 * scrollSpeed
+                let gap = 51.0 * scrollSpeed
                 brickX += gap
                 //create water and add to line walk
-                let water = spawnWater(atPosition: CGPoint(x: brickX - brickSize.width, y: brickY - brickLevel.rawValue - 5.0))
+                var water = spawnWater(atPosition: CGPoint(x: brickX - brickSize.width, y: brickY - brickLevel.rawValue - 5.0))
+                farthestRightBrickX = water.position.x
+                water = spawnWater(atPosition: CGPoint(x: brickX - 2 * brickSize.width , y: brickY - brickLevel.rawValue - 5.0))
                 farthestRightBrickX = water.position.x
                 kindBrick = .first
                 let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
