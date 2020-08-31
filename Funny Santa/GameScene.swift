@@ -346,14 +346,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             //create hole in brick
             let rundomNumber = arc4random_uniform(99)
-            if rundomNumber < 2 && score > 10 {
-                var foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
-                if brickLevel == .high {
-                    farthestRightBrickX = foundationBrick.position.x
-                }
+            if rundomNumber < 10 && score > 10 {
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
+                var foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
+//                if brickLevel == .high {
+//                    farthestRightBrickX = foundationBrick.position.x
+//                }
                 let gap = 51.0 * scrollSpeed
                 brickX += gap
                 //create water and add to line walk
@@ -374,7 +374,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let newcandyX = brickX - gap / 3.0
                 spawncandy(atPosition: CGPoint(x: newcandyX, y: newcandyY))
             }
-            else if rundomNumber < 4 && score > 20 {
+            else if rundomNumber < 15 && score > 20 {
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
