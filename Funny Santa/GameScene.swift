@@ -40,6 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var santa = Santa()
     //create SKTexture array for animate santa sprite
     var santaWalkingFrames : [SKTexture] = []
+    //create SKTexture array for animate santa jump
+    var santaJumpFrames : [SKTexture] = []
     //create array bricks
     var bricks = [SKSpriteNode]()
     //brick size on road
@@ -65,19 +67,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //create kindBrick instance
     var kindBrick = KindBrick.main
     
-    override func didMove(to view: SKView) {
+    override func sceneDidLoad() {
+        super.sceneDidLoad()
+        loadSantaImage()
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
         // add contact delegate
         physicsWorld.contactDelegate = self
         anchorPoint = CGPoint.zero
+    }
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        // add tapGesture to scene
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
+        view.addGestureRecognizer(tapGesture)
         //call setup and configure function
         setupBackground()
         setupLabels()
         buildSanta()
-        santaAnimate()
-        // add tapGesture to scene
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
-        view.addGestureRecognizer(tapGesture)
         //display start game menu
         let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
         let menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
@@ -108,6 +115,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // call function update node by currentScrollAmount
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
+        if let velocityY = santa.physicsBody?.velocity.dy {
+            if velocityY == 0.0 {
+                santaAnimate()
+            }
+            else if !santa.isOnGroud {
+                santaJumpAnimate()
+            }
+        }
+        // santa animate when on ground
         updatecandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
         updateScore(withCurrentTime: currentTime)
@@ -117,6 +133,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if stateGame == .running {
             if santa.isOnGroud {
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
+                santaJumpAnimate()
+                santa.isOnGroud = false
                 // sound when santa jump
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
             }
@@ -131,11 +149,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         //configure contact santa & brick
         if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.brick {
-            if let velocityY = santa.physicsBody?.velocity.dy {
-                if !santa.isOnGroud && velocityY < 50.0 {
-                    santa.createSnowSplash()
-                }
-            }
             santa.createSnowSplash()
             santa.isOnGroud = true
         }
@@ -150,8 +163,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
-    // build frame santa on scene
-    func buildSanta() {
+    //load image from assets to array
+    func loadSantaImage() {
         let santaAnimatedAtlas = SKTextureAtlas(named: "Santa")
         var walkFrames: [SKTexture] = []
         let numImages = santaAnimatedAtlas.textureNames.count
@@ -160,6 +173,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             walkFrames.append(SKTexture(imageNamed: imageName))
         }
         santaWalkingFrames = walkFrames
+        let santaJumpTexture = SKTexture(imageNamed: "SantaJump")
+        santaJumpFrames.append(santaJumpTexture)
+    }
+    // build frame santa on scene
+    func buildSanta() {
         let firstTextureFrame = santaWalkingFrames[0]
         santa = Santa(texture: firstTextureFrame)
         santa.setupPhysicsBody()
@@ -169,6 +187,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func santaAnimate() {
         let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.1)
         santa.run(SKAction.repeatForever(santaWalkAnimate))
+    }
+    //animate Santa jump
+    func santaJumpAnimate() {
+        
+        let santaJumpAction = SKAction.animate(with: santaJumpFrames, timePerFrame: 0.1)
+        santa.run(SKAction.repeatForever(santaJumpAction))
     }
     //setup background image
     func setupBackground() {
@@ -188,6 +212,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         santa.zPosition = 0.0
         santa.physicsBody?.velocity = CGVector(dx: 0.0, dy: 0.0)
         santa.physicsBody?.angularVelocity = 0.0
+        
     }
     //configure labels with points gamer and best resault
     func setupLabels() {
@@ -351,9 +376,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
                 var foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
-//                if brickLevel == .high {
-//                    farthestRightBrickX = foundationBrick.position.x
-//                }
+                                if brickLevel == .high {
+                                    farthestRightBrickX = foundationBrick.position.x
+                                }
                 let gap = 51.0 * scrollSpeed
                 brickX += gap
                 //create water and add to line walk
@@ -414,11 +439,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure update santa on screen - jump and down
     func updateSanta() {
-        if let velocityY = santa.physicsBody?.velocity.dy {
-            if velocityY < -100.0 || velocityY > 100.0 {
-                santa.isOnGroud = false
-            }
-        }
         let isOffScreen = santa.position.y < 0.0 || santa.position.x < 0.0
         let maxRotation = CGFloat(GLKMathDegreesToRadians(85.0))
         let isTippedOver = santa.zRotation > maxRotation || santa.zRotation < -maxRotation
