@@ -23,7 +23,7 @@ class Santa: SKSpriteNode {
             physicsBody?.allowsRotation = false
             physicsBody?.angularDamping = 1.0
             physicsBody?.categoryBitMask = PhysicsCategory.santa
-            physicsBody?.collisionBitMask = PhysicsCategory.brick
+            physicsBody?.collisionBitMask = PhysicsCategory.brick | PhysicsCategory.tree
             physicsBody?.contactTestBitMask = PhysicsCategory.brick | PhysicsCategory.candy | PhysicsCategory.water
         }
     }

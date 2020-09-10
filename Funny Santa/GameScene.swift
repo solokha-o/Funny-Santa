@@ -14,6 +14,7 @@ struct PhysicsCategory {
     static let brick : UInt32 = 0x1 << 1
     static let candy : UInt32 = 0x1 << 2
     static let water : UInt32 = 0x1 << 3
+    static let tree : UInt32 = 0x1 << 4
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -85,6 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupBackground()
         setupLabels()
         buildSanta()
+        santaAnimate()
         //display start game menu
         let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
         let menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
@@ -115,16 +117,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // call function update node by currentScrollAmount
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
-        if let velocityY = santa.physicsBody?.velocity.dy {
-            if velocityY == 0.0 {
-                santaAnimate()
-            }
-            else if !santa.isOnGroud {
-                santaJumpAnimate()
-            }
-        }
+//        if let velocityY = santa.physicsBody?.velocity.dy {
+//            if velocityY == 0.0 {
+//                santaAnimate()
+//            }
+//            else if !santa.isOnGroud {
+//                santaJumpAnimate()
+//            }
+//        }
         // santa animate when on ground
-        updatecandy(withScrollAmount: currentScrollAmount)
+        updateCandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
         updateScore(withCurrentTime: currentTime)
     }
@@ -133,7 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if stateGame == .running {
             if santa.isOnGroud {
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
-                santaJumpAnimate()
+//                santaJumpAnimate()
                 santa.isOnGroud = false
                 // sound when santa jump
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
@@ -155,7 +157,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //configure contact santa & candy
         else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.candy {
             if let candy = contact.bodyB.node as? SKSpriteNode {
-                removecandy(candy)
+                removeСandy(candy)
                 score += 50
                 //sound when take candy
                 run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
@@ -271,7 +273,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         bricks.removeAll(keepingCapacity: true)
         for candy in candies {
-            removecandy(candy)
+            removeСandy(candy)
         }
     }
     // configure game over
@@ -307,7 +309,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         return brick
     }
     //configure candy
-    func spawncandy(atPosition position: CGPoint) {
+    func spawnСandy(atPosition position: CGPoint) {
         let candy = SKSpriteNode(imageNamed: "candy")
         candy.position = position
         candy.zPosition = 9
@@ -318,7 +320,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         candies.append(candy)
     }
     //configure remove candy
-    func removecandy (_ candy: SKSpriteNode) {
+    func removeСandy (_ candy: SKSpriteNode) {
         candy.removeFromParent()
         if let candyIndex = candies.firstIndex(of: candy) {
             candies.remove(at: candyIndex)
@@ -338,7 +340,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         water.physicsBody?.collisionBitMask = 0
         return water
     }
-    
+    //configure tree
+    func spawnTree(atPosition position: CGPoint) -> SKSpriteNode {
+        let treeArray = ["trees", "tree", "trees"]
+        let rundomNumber = arc4random_uniform(2)
+        let tree = SKSpriteNode(imageNamed: treeArray[Int(rundomNumber)])
+        tree.position = position
+        tree.zPosition = 10
+        addChild(tree)
+        bricks.append(tree)
+        let center = tree.centerRect.origin
+        tree.physicsBody = SKPhysicsBody(rectangleOf: tree.size, center: center)
+        tree.physicsBody?.affectedByGravity = false
+        tree.physicsBody?.categoryBitMask = PhysicsCategory.tree
+        tree.physicsBody?.collisionBitMask = 0
+        return tree
+    }
     func updateBricks(withScrollAmount currentScrollAmount: CGFloat) {
         // position of first brick
         var farthestRightBrickX: CGFloat = 0.0
@@ -397,7 +414,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let randomcandyYamount = CGFloat(arc4random_uniform(150))
                 let newcandyY = brickY + santa.size.height + randomcandyYamount
                 let newcandyX = brickX - gap / 3.0
-                spawncandy(atPosition: CGPoint(x: newcandyX, y: newcandyY))
+                spawnСandy(atPosition: CGPoint(x: newcandyX, y: newcandyY))
             }
             else if rundomNumber < 15 && score > 20 {
                 kindBrick = .last
@@ -416,15 +433,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     farthestRightBrickX = firstBrick.position.x
                 }
             }
+            // create tree with rundom
+            else if rundomNumber < 20 && score > 30 {
+                let tree = spawnTree(atPosition: CGPoint(x: brickX, y: brickY + brickSize.height))
+                farthestRightBrickX = tree.position.x
+            }
         }
     }
     // configure update candies in scroll speed
-    func updatecandy(withScrollAmount currentScrollAmount: CGFloat) {
+    func updateCandy(withScrollAmount currentScrollAmount: CGFloat) {
         for candy in candies {
             let candyX = candy.position.x - currentScrollAmount
             candy.position = CGPoint(x: candyX, y: candy.position.y)
             if candy.position.x < 0.0 {
-                removecandy(candy)
+                removeСandy(candy)
             }
         }
     }
