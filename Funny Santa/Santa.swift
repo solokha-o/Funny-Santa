@@ -27,7 +27,7 @@ class Santa: SKSpriteNode {
             physicsBody?.contactTestBitMask = PhysicsCategory.brick | PhysicsCategory.candy | PhysicsCategory.water
         }
     }
-    //create sparks when santa run
+    //create snow splash when santa jump
     func createSnowSplash() {
         if let snowSplashsNode = SKEmitterNode(fileNamed: "SnowSplash") {
             snowSplashsNode.position = CGPoint(x: 0.0, y: -50.0)
@@ -36,6 +36,17 @@ class Santa: SKSpriteNode {
             let removeAction = SKAction.removeFromParent()
             let waitThenRemove = SKAction.sequence([waitAction, removeAction])
             snowSplashsNode.run(waitThenRemove)
+        }
+    }
+    //create water splash when santa falls to water
+    func createWaterSplash() {
+        if let waterSplashsNode = SKEmitterNode(fileNamed: "WaterSplash") {
+            waterSplashsNode.position = CGPoint(x: 0.0, y: -50.0)
+            addChild(waterSplashsNode)
+            let waitAction = SKAction.wait(forDuration: 0.5)
+            let removeAction = SKAction.removeFromParent()
+            let waitThenRemove = SKAction.sequence([waitAction, removeAction])
+            waterSplashsNode.run(waitThenRemove)
         }
     }
 }

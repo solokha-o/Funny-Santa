@@ -84,6 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         view.addGestureRecognizer(tapGesture)
         //call setup and configure function
         setupBackground()
+        snowing()
         setupLabels()
         buildSanta()
         santaAnimate()
@@ -117,14 +118,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // call function update node by currentScrollAmount
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
-//        if let velocityY = santa.physicsBody?.velocity.dy {
-//            if velocityY == 0.0 {
-//                santaAnimate()
-//            }
-//            else if !santa.isOnGroud {
-//                santaJumpAnimate()
-//            }
-//        }
+        //        if let velocityY = santa.physicsBody?.velocity.dy {
+        //            if velocityY == 0.0 {
+        //                santaAnimate()
+        //            }
+        //            else if !santa.isOnGroud {
+        //                santaJumpAnimate()
+        //            }
+        //        }
         // santa animate when on ground
         updateCandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
@@ -135,7 +136,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if stateGame == .running {
             if santa.isOnGroud {
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
-//                santaJumpAnimate()
+                //                santaJumpAnimate()
                 santa.isOnGroud = false
                 // sound when santa jump
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
@@ -163,6 +164,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
                 updateScoreTextLable()
             }
+        //configure contact santa and water
+        } else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
+            santa.createWaterSplash()
         }
     }
     //load image from assets to array
@@ -203,6 +207,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let yMid = frame.midY
         background.position = CGPoint(x: xMid, y: yMid)
         addChild(background)
+    }
+    //setup snowing on main scene
+    func snowing() {
+        if let snowing = SKEmitterNode(fileNamed: "Snowing") {
+            let xMid = frame.midX
+            let yMid = frame.midY
+            snowing.position = CGPoint(x: xMid, y: yMid)
+            addChild(snowing)
+        }
     }
     //setup santa on scene
     func resetSanta() {
@@ -393,9 +406,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
                 var foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
-                                if brickLevel == .high {
-                                    farthestRightBrickX = foundationBrick.position.x
-                                }
+                if brickLevel == .high {
+                    farthestRightBrickX = foundationBrick.position.x
+                }
                 let gap = 51.0 * scrollSpeed
                 brickX += gap
                 //create water and add to line walk

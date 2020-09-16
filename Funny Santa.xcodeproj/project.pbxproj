@@ -21,6 +21,8 @@
 		DB5A612224DDDBE3001A724F /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612024DDDBE2001A724F /* jump.wav */; };
 		DB5A612324DDDBE3001A724F /* candy.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* candy.wav */; };
 		DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB6E4A1F24F57635007E4098 /* SnowSplash.sks */; };
+		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
+		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		DB5A612024DDDBE2001A724F /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
 		DB5A612124DDDBE3001A724F /* candy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = candy.wav; sourceTree = "<group>"; };
 		DB6E4A1F24F57635007E4098 /* SnowSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowSplash.sks; sourceTree = "<group>"; };
+		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
+		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,8 @@
 				DB5A610A24DDD8DC001A724F /* GameViewController.swift */,
 				DB5A611E24DDDAEB001A724F /* sparks.sks */,
 				DB6E4A1F24F57635007E4098 /* SnowSplash.sks */,
+				DB908295250FC874001F1E7F /* WaterSplash.sks */,
+				DB908297251253F4001F1E7F /* Snowing.sks */,
 				DB5A612124DDDBE3001A724F /* candy.wav */,
 				DB5A612024DDDBE2001A724F /* jump.wav */,
 				DB5A610C24DDD8DC001A724F /* Main.storyboard */,
@@ -153,11 +159,13 @@
 				DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */,
 				DB5A610524DDD8DC001A724F /* GameScene.sks in Resources */,
 				DB5A612224DDDBE3001A724F /* jump.wav in Resources */,
+				DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */,
 				DB5A612324DDDBE3001A724F /* candy.wav in Resources */,
 				DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */,
 				DB5A611024DDD8DE001A724F /* Assets.xcassets in Resources */,
 				DB5A611324DDD8DE001A724F /* LaunchScreen.storyboard in Resources */,
 				DB5A610724DDD8DC001A724F /* Actions.sks in Resources */,
+				DB908298251253F4001F1E7F /* Snowing.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
