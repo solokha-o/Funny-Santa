@@ -166,6 +166,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             //configure contact santa and water
         } else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
+            //create water splash and sound when santa fills to water
+            run(SKAction.playSoundFileNamed("waterSplash", waitForCompletion: false))
             santa.createWaterSplash()
         }
     }
@@ -304,6 +306,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
         menuLayer.display(message: "Game over!", score: score)
+        run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
         addChild(menuLayer)
     }
     //configure brick
@@ -401,7 +404,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             //create hole in brick
             let rundomNumber = arc4random_uniform(99)
-            if rundomNumber < 10 && score > 10 {
+            if rundomNumber < 5 && score > 10 {
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
@@ -447,7 +450,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             // create tree with rundom
-            else if rundomNumber < 20 && score > 30 {
+            else if rundomNumber < 25 {
                 let tree = spawnTree(atPosition: CGPoint(x: brickX, y: brickY + brickSize.height))
                 farthestRightBrickX = tree.position.x
             }
