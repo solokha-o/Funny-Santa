@@ -450,7 +450,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
             }
             // create tree with rundom
-            else if rundomNumber < 25 {
+            else if rundomNumber < 25 && score > 25 {
                 let tree = spawnTree(atPosition: CGPoint(x: brickX, y: brickY + brickSize.height))
                 farthestRightBrickX = tree.position.x
             }
