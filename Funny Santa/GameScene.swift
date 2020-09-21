@@ -135,11 +135,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     @objc func handleTap(tapGesture: UITapGestureRecognizer) {
         if stateGame == .running {
             if santa.isOnGroud {
+                // sound when santa jump
+                run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                 //                santaJumpAnimate()
                 santa.isOnGroud = false
-                // sound when santa jump
-                run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
             }
         } else {
             if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
@@ -164,7 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
                 updateScoreTextLable()
             }
-        //configure contact santa and water
+            //configure contact santa and water
         } else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
             santa.createWaterSplash()
         }
