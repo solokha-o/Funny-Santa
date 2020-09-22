@@ -23,6 +23,7 @@
 		DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB5A611E24DDDAEB001A724F /* sparks.sks */; };
 		DB5A612324DDDBE3001A724F /* candy.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* candy.wav */; };
 		DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB6E4A1F24F57635007E4098 /* SnowSplash.sks */; };
+		DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
 		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		DB5A611E24DDDAEB001A724F /* sparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparks.sks; sourceTree = "<group>"; };
 		DB5A612124DDDBE3001A724F /* candy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = candy.wav; sourceTree = "<group>"; };
 		DB6E4A1F24F57635007E4098 /* SnowSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowSplash.sks; sourceTree = "<group>"; };
+		DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSong.mp3; sourceTree = "<group>"; };
 		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +97,7 @@
 				DB5204762518C2DB0071A837 /* jump.wav */,
 				DB5204802518C9C10071A837 /* gameOver.wav */,
 				DB52047D2518C5C80071A837 /* waterSplash.wav */,
+				DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */,
 				DB5A610C24DDD8DC001A724F /* Main.storyboard */,
 				DB5A610F24DDD8DE001A724F /* Assets.xcassets */,
 				DB5A611124DDD8DE001A724F /* LaunchScreen.storyboard */,
@@ -164,6 +167,7 @@
 				DB5204772518C2DC0071A837 /* jump.wav in Resources */,
 				DB5A610E24DDD8DC001A724F /* Main.storyboard in Resources */,
 				DB5204812518C9C10071A837 /* gameOver.wav in Resources */,
+				DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */,
 				DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */,
 				DB5A610524DDD8DC001A724F /* GameScene.sks in Resources */,
 				DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */,

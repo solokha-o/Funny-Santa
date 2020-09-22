@@ -84,6 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         view.addGestureRecognizer(tapGesture)
         //call setup and configure function
         setupBackground()
+        setBackgroundSong()
         snowing()
         setupLabels()
         buildSanta()
@@ -209,6 +210,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let yMid = frame.midY
         background.position = CGPoint(x: xMid, y: yMid)
         addChild(background)
+    }
+    //setup background song
+    func setBackgroundSong() {
+        let backgroundSong = SKAudioNode(fileNamed: "backgroundSong.mp3")
+        addChild(backgroundSong)
     }
     //setup snowing on main scene
     func snowing() {
