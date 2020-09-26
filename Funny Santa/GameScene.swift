@@ -83,6 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
         view.addGestureRecognizer(tapGesture)
         //call setup and configure function
+        loadSantaImage()
         setupBackground()
         setBackgroundSong()
         snowing()
@@ -314,6 +315,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.display(message: "Game over!", score: score)
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
         addChild(menuLayer)
+        santaWalkingFrames.removeAll()
     }
     //configure brick
     func spawnBrick (atPosition position: CGPoint, kindBriсk: KindBrick) -> SKSpriteNode {
@@ -334,7 +336,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func spawnСandy(atPosition position: CGPoint) {
         let candy = SKSpriteNode(imageNamed: "candy")
         candy.position = position
-        candy.zPosition = 9
+        candy.zPosition = 8
         addChild(candy)
         candy.physicsBody = SKPhysicsBody(rectangleOf: candy.size, center: candy.centerRect.origin)
         candy.physicsBody?.categoryBitMask = PhysicsCategory.candy
@@ -420,6 +422,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 let gap = 51.0 * scrollSpeed
                 brickX += gap
+                // create candy where gap
+                let randomcandyYamount = CGFloat(arc4random_uniform(150))
+                let newcandyY = brickY + santa.size.height + randomcandyYamount
+                let newcandyX = brickX - gap / 3.0
+                spawnСandy(atPosition: CGPoint(x: newcandyX, y: newcandyY))
                 //create water and add to line walk
                 var water = spawnWater(atPosition: CGPoint(x: brickX - brickSize.width, y: brickY - brickLevel.rawValue - 5.0))
                 farthestRightBrickX = water.position.x
@@ -432,11 +439,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
                     farthestRightBrickX = foundationBrick.position.x
                 }
-                // create candy where gap
-                let randomcandyYamount = CGFloat(arc4random_uniform(150))
-                let newcandyY = brickY + santa.size.height + randomcandyYamount
-                let newcandyX = brickX - gap / 3.0
-                spawnСandy(atPosition: CGPoint(x: newcandyX, y: newcandyY))
             }
             else if rundomNumber < 15 && score > 20 {
                 kindBrick = .last
