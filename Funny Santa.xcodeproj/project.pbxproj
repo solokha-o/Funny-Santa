@@ -26,6 +26,7 @@
 		DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
 		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
+		DBB56FF3254435460030A2E1 /* ho-ho-ho.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSong.mp3; sourceTree = "<group>"; };
 		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
+		DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ho-ho-ho.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				DB5A612124DDDBE3001A724F /* candy.wav */,
 				DB5204762518C2DB0071A837 /* jump.wav */,
 				DB5204802518C9C10071A837 /* gameOver.wav */,
+				DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */,
 				DB52047D2518C5C80071A837 /* waterSplash.wav */,
 				DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */,
 				DB5A610C24DDD8DC001A724F /* Main.storyboard */,
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB5204772518C2DC0071A837 /* jump.wav in Resources */,
+				DBB56FF3254435460030A2E1 /* ho-ho-ho.wav in Resources */,
 				DB5A610E24DDD8DC001A724F /* Main.storyboard in Resources */,
 				DB5204812518C9C10071A837 /* gameOver.wav in Resources */,
 				DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */,

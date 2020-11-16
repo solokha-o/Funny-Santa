@@ -120,14 +120,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // call function update node by currentScrollAmount
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
-        //        if let velocityY = santa.physicsBody?.velocity.dy {
-        //            if velocityY == 0.0 {
-        //                santaAnimate()
-        //            }
-        //            else if !santa.isOnGroud {
-        //                santaJumpAnimate()
-        //            }
-        //        }
+        if let velocityY = santa.physicsBody?.velocity.dy {
+            if velocityY == 0.0 {
+                santaAnimate()
+            }
+            else if !santa.isOnGroud {
+                santaJumpAnimate()
+            }
+        }
         // santa animate when on ground
         updateCandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
@@ -164,6 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 score += 50
                 //sound when take candy
                 run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
+                run(SKAction.playSoundFileNamed("ho-ho-ho.wav", waitForCompletion: false))
                 updateScoreTextLable()
             }
             //configure contact santa and water
@@ -285,6 +286,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //configure start game
     func startGame() {
         stateGame = .running
+        loadSantaImage()
         resetSanta()
         score = 0
         scrollSpeed = startingScrollSpeed
