@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB4E24682590C5280072E79E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB4E24672590C5280072E79E /* GameScene.sks */; };
 		DB5204772518C2DC0071A837 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5204762518C2DB0071A837 /* jump.wav */; };
 		DB52047E2518C5C80071A837 /* waterSplash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB52047D2518C5C80071A837 /* waterSplash.wav */; };
 		DB5204812518C9C10071A837 /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5204802518C9C10071A837 /* gameOver.wav */; };
 		DB5A610324DDD8DC001A724F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A610224DDD8DC001A724F /* AppDelegate.swift */; };
-		DB5A610524DDD8DC001A724F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB5A610424DDD8DC001A724F /* GameScene.sks */; };
-		DB5A610724DDD8DC001A724F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB5A610624DDD8DC001A724F /* Actions.sks */; };
 		DB5A610924DDD8DC001A724F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A610824DDD8DC001A724F /* GameScene.swift */; };
 		DB5A610B24DDD8DC001A724F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A610A24DDD8DC001A724F /* GameViewController.swift */; };
 		DB5A610E24DDD8DC001A724F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5A610C24DDD8DC001A724F /* Main.storyboard */; };
@@ -20,7 +19,6 @@
 		DB5A611324DDD8DE001A724F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5A611124DDD8DE001A724F /* LaunchScreen.storyboard */; };
 		DB5A611B24DDD9FD001A724F /* Santa.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A611A24DDD9FD001A724F /* Santa.swift */; };
 		DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A611C24DDDA9B001A724F /* MenuLayer.swift */; };
-		DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB5A611E24DDDAEB001A724F /* sparks.sks */; };
 		DB5A612324DDDBE3001A724F /* candy.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* candy.wav */; };
 		DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB6E4A1F24F57635007E4098 /* SnowSplash.sks */; };
 		DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
@@ -30,13 +28,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB4E24672590C5280072E79E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		DB5204762518C2DB0071A837 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
 		DB52047D2518C5C80071A837 /* waterSplash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = waterSplash.wav; sourceTree = "<group>"; };
 		DB5204802518C9C10071A837 /* gameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = gameOver.wav; sourceTree = "<group>"; };
 		DB5A60FF24DDD8DC001A724F /* Funny Santa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Funny Santa.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB5A610224DDD8DC001A724F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DB5A610424DDD8DC001A724F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		DB5A610624DDD8DC001A724F /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		DB5A610824DDD8DC001A724F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		DB5A610A24DDD8DC001A724F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		DB5A610D24DDD8DC001A724F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -45,7 +42,6 @@
 		DB5A611424DDD8DE001A724F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB5A611A24DDD9FD001A724F /* Santa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Santa.swift; sourceTree = "<group>"; };
 		DB5A611C24DDDA9B001A724F /* MenuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
-		DB5A611E24DDDAEB001A724F /* sparks.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparks.sks; sourceTree = "<group>"; };
 		DB5A612124DDDBE3001A724F /* candy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = candy.wav; sourceTree = "<group>"; };
 		DB6E4A1F24F57635007E4098 /* SnowSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowSplash.sks; sourceTree = "<group>"; };
 		DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSong.mp3; sourceTree = "<group>"; };
@@ -65,6 +61,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB4E24632590C4060072E79E /* GameSceneFiles */ = {
+			isa = PBXGroup;
+			children = (
+				DB4E24672590C5280072E79E /* GameScene.sks */,
+				DB5A610824DDD8DC001A724F /* GameScene.swift */,
+				DB5A611C24DDDA9B001A724F /* MenuLayer.swift */,
+				DB5A611A24DDD9FD001A724F /* Santa.swift */,
+				DB5A610A24DDD8DC001A724F /* GameViewController.swift */,
+			);
+			path = GameSceneFiles;
+			sourceTree = "<group>";
+		};
+		DB4E24642590C4300072E79E /* Partical Emitter */ = {
+			isa = PBXGroup;
+			children = (
+				DB6E4A1F24F57635007E4098 /* SnowSplash.sks */,
+				DB908295250FC874001F1E7F /* WaterSplash.sks */,
+				DB908297251253F4001F1E7F /* Snowing.sks */,
+			);
+			path = "Partical Emitter";
+			sourceTree = "<group>";
+		};
+		DB4E24652590C4520072E79E /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				DB5A612124DDDBE3001A724F /* candy.wav */,
+				DB5204762518C2DB0071A837 /* jump.wav */,
+				DB5204802518C9C10071A837 /* gameOver.wav */,
+				DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */,
+				DB52047D2518C5C80071A837 /* waterSplash.wav */,
+				DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		DB5A60F624DDD8DC001A724F = {
 			isa = PBXGroup;
 			children = (
@@ -85,22 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				DB5A610224DDD8DC001A724F /* AppDelegate.swift */,
-				DB5A610424DDD8DC001A724F /* GameScene.sks */,
-				DB5A610624DDD8DC001A724F /* Actions.sks */,
-				DB5A610824DDD8DC001A724F /* GameScene.swift */,
-				DB5A611C24DDDA9B001A724F /* MenuLayer.swift */,
-				DB5A611A24DDD9FD001A724F /* Santa.swift */,
-				DB5A610A24DDD8DC001A724F /* GameViewController.swift */,
-				DB5A611E24DDDAEB001A724F /* sparks.sks */,
-				DB6E4A1F24F57635007E4098 /* SnowSplash.sks */,
-				DB908295250FC874001F1E7F /* WaterSplash.sks */,
-				DB908297251253F4001F1E7F /* Snowing.sks */,
-				DB5A612124DDDBE3001A724F /* candy.wav */,
-				DB5204762518C2DB0071A837 /* jump.wav */,
-				DB5204802518C9C10071A837 /* gameOver.wav */,
-				DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */,
-				DB52047D2518C5C80071A837 /* waterSplash.wav */,
-				DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */,
+				DB4E24632590C4060072E79E /* GameSceneFiles */,
+				DB4E24642590C4300072E79E /* Partical Emitter */,
+				DB4E24652590C4520072E79E /* Sounds */,
 				DB5A610C24DDD8DC001A724F /* Main.storyboard */,
 				DB5A610F24DDD8DE001A724F /* Assets.xcassets */,
 				DB5A611124DDD8DE001A724F /* LaunchScreen.storyboard */,
@@ -172,15 +190,13 @@
 				DB5A610E24DDD8DC001A724F /* Main.storyboard in Resources */,
 				DB5204812518C9C10071A837 /* gameOver.wav in Resources */,
 				DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */,
-				DB5A611F24DDDAEB001A724F /* sparks.sks in Resources */,
-				DB5A610524DDD8DC001A724F /* GameScene.sks in Resources */,
 				DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */,
 				DB5A612324DDDBE3001A724F /* candy.wav in Resources */,
 				DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */,
 				DB5A611024DDD8DE001A724F /* Assets.xcassets in Resources */,
 				DB5A611324DDD8DE001A724F /* LaunchScreen.storyboard in Resources */,
 				DB52047E2518C5C80071A837 /* waterSplash.wav in Resources */,
-				DB5A610724DDD8DC001A724F /* Actions.sks in Resources */,
+				DB4E24682590C5280072E79E /* GameScene.sks in Resources */,
 				DB908298251253F4001F1E7F /* Snowing.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
