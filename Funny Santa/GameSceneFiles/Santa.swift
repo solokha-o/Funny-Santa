@@ -36,6 +36,7 @@ class Santa: SKSpriteNode {
             let removeAction = SKAction.removeFromParent()
             let waitThenRemove = SKAction.sequence([waitAction, removeAction])
             snowSplashsNode.run(waitThenRemove)
+            print("Snow splash was displayed.")
         }
     }
     //create water splash when santa falls to water
@@ -47,6 +48,7 @@ class Santa: SKSpriteNode {
             let removeAction = SKAction.removeFromParent()
             let waitThenRemove = SKAction.sequence([waitAction, removeAction])
             waterSplashsNode.run(waitThenRemove)
+            print("Water splash was displayed.")
         }
     }
 }

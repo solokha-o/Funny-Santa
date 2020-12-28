@@ -48,9 +48,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //brick size on road
     var brickSize = CGSize.zero
     // bricks speed
-    var scrollSpeed : CGFloat = 5.0
+    var scrollSpeed : CGFloat = 4.0
     //create starting speed
-    let startingScrollSpeed : CGFloat = 5.0
+    let startingScrollSpeed : CGFloat = 4.0
     // create property for time interval update game
     var lastUpdateTime : TimeInterval?
     // create gravity
@@ -83,10 +83,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
         view.addGestureRecognizer(tapGesture)
         //call setup and configure function
-        loadSantaImage()
         setupBackground()
         setBackgroundSong()
-        snowing()
+        setSnowing()
         setupLabels()
         buildSanta()
         santaAnimate()
@@ -107,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         //boost speed
-        //        scrollSpeed += 0.0001
+        scrollSpeed += 0.0001
         // configure time update animation
         var elapsedTime : TimeInterval = 0.0
         if let lastTimeStamp = lastUpdateTime {
@@ -140,8 +139,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // sound when santa jump
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
-                //                santaJumpAnimate()
                 santa.isOnGroud = false
+                print("Played sound of Santa's jump")
+                print("Santa jump.")
             }
         } else {
             if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
@@ -156,22 +156,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.brick {
             santa.createSnowSplash()
             santa.isOnGroud = true
+            print("Santa is running with speed - \(scrollSpeed)")
         }
         //configure contact santa & candy
         else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.candy {
             if let candy = contact.bodyB.node as? SKSpriteNode {
                 removeСandy(candy)
                 score += 50
+                print("Score now - \(score)")
                 //sound when take candy
                 run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
                 run(SKAction.playSoundFileNamed("ho-ho-ho.wav", waitForCompletion: false))
+                print("Played sound when Santa take a candy")
+                print("Santa take candy")
                 updateScoreTextLable()
             }
             //configure contact santa and water
         } else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
             //create water splash and sound when santa fills to water
-            run(SKAction.playSoundFileNamed("waterSplash", waitForCompletion: false))
+            run(SKAction.playSoundFileNamed("waterSplash", waitForCompletion: true))
+            print("Santa had fell to water.")
             santa.createWaterSplash()
+            scrollSpeed = 0.0
         }
     }
     //load image from assets to array
@@ -184,25 +190,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             walkFrames.append(SKTexture(imageNamed: imageName))
         }
         santaWalkingFrames = walkFrames
+        print("Images for Santa walking are load: \(santaWalkingFrames)")
         let santaJumpTexture = SKTexture(imageNamed: "SantaJump")
         santaJumpFrames.append(santaJumpTexture)
+        print("Images for Santa jamp are load: \(santaJumpFrames)")
     }
     // build frame santa on scene
     func buildSanta() {
         let firstTextureFrame = santaWalkingFrames[0]
         santa = Santa(texture: firstTextureFrame)
         santa.setupPhysicsBody()
+        print("Santa had loaded.\n Texture - \(String(describing: santa.texture)).\n Santa position on screen: x - \(santa.position.x), y - \(santa.position.y).\n Santa scale: x - \(santa.xScale), y - \(santa.yScale).\n Santa size: height -  \(santa.size.height), width - \(santa.size.width).\n Santa anchor: \(santa.anchorPoint).\n Santa rotation: \(santa.zRotation)")
         addChild(santa)
     }
     //animate walking santa
     func santaAnimate() {
-        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.1)
+        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.05)
         santa.run(SKAction.repeatForever(santaWalkAnimate))
     }
     //animate Santa jump
     func santaJumpAnimate() {
-        
-        let santaJumpAction = SKAction.animate(with: santaJumpFrames, timePerFrame: 0.1)
+        let santaJumpAction = SKAction.animate(with: santaJumpFrames, timePerFrame: 0.01)
         santa.run(SKAction.repeatForever(santaJumpAction))
     }
     //setup background image
@@ -211,20 +219,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xMid = frame.midX
         let yMid = frame.midY
         background.position = CGPoint(x: xMid, y: yMid)
+        print("Background had setuped.\n Texture - \(String(describing: background.texture)).\n Background position on screen: x - \(background.position.x), y - \(background.position.y)./n")
         addChild(background)
     }
     //setup background song
     func setBackgroundSong() {
         let backgroundSong = SKAudioNode(fileNamed: "backgroundSong.mp3")
         addChild(backgroundSong)
+        print("Play background song")
     }
     //setup snowing on main scene
-    func snowing() {
+    func setSnowing() {
         if let snowing = SKEmitterNode(fileNamed: "Snowing") {
             let xMid = frame.midX
             let yMid = frame.midY
             snowing.position = CGPoint(x: xMid, y: yMid)
             addChild(snowing)
+            print("It is snowing.")
         }
     }
     //setup santa on scene
@@ -237,6 +248,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         santa.zPosition = 0.0
         santa.physicsBody?.velocity = CGVector(dx: 0.0, dy: 0.0)
         santa.physicsBody?.angularVelocity = 0.0
+        print("Santa was reset.")
         
     }
     //configure labels with points gamer and best resault
@@ -248,6 +260,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreTextLabel.fontSize = 18.0
         scoreTextLabel.zPosition = 20
         addChild(scoreTextLabel)
+        print("Label 'Points' had setted.")
         let scoreLabel: SKLabelNode = SKLabelNode(text: "0")
         scoreLabel.position = CGPoint(x: 14.0, y: frame.size.height - 40.0)
         scoreLabel.horizontalAlignmentMode = .left
@@ -256,12 +269,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.name = "scoreLabel"
         scoreLabel.zPosition = 20
         addChild(scoreLabel)
+        print("Label of score had seted.")
         let highScoreTextLabel: SKLabelNode = SKLabelNode(text: "Best resault")
         highScoreTextLabel.position = CGPoint(x: frame.size.width - 14.0, y: frame.size.height - 20.0)
         highScoreTextLabel.horizontalAlignmentMode = .right
         highScoreTextLabel.fontName = "Courier-Bold"; highScoreTextLabel.fontSize = 18.0
         highScoreTextLabel.zPosition = 20
         addChild(highScoreTextLabel)
+        print("Label 'Best resault' had setted.")
         let highScoreLabel: SKLabelNode = SKLabelNode(text: "0")
         highScoreLabel.position = CGPoint(x: frame.size.width - 14.0, y: frame.size.height - 40.0)
         highScoreLabel.horizontalAlignmentMode = .right
@@ -270,17 +285,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         highScoreLabel.name = "highScoreLabel"
         highScoreLabel.zPosition = 20
         addChild(highScoreLabel)
+        print("Label of high score had setted.")
     }
     //configure update score text in labels
     func updateScoreTextLable() {
         if let scoreLable = childNode(withName: "scoreLabel") as? SKLabelNode {
             scoreLable.text = String(format: "%04d", score)
+            print("ScoreLabel was update - \(score)")
         }
     }
     //configure update high score text in labels
     func updateHighScoreTextLabel() {
         if let highScoreLabel = childNode(withName: "highScoreLabel") as? SKLabelNode {
             highScoreLabel.text = String(format: "%04d", highScore)
+            print("HighScoreLabel was update - \(highScore)")
         }
     }
     //configure start game
@@ -289,6 +307,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         loadSantaImage()
         resetSanta()
         score = 0
+        print("Score had began - \(score)")
         scrollSpeed = startingScrollSpeed
         brickLevel = .low
         lastUpdateTime = nil
@@ -296,6 +315,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             brick.removeFromParent()
         }
         bricks.removeAll(keepingCapacity: true)
+        print("All bricks had removed from screen.")
         for candy in candies {
             removeСandy(candy)
         }
@@ -304,6 +324,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func gameOver() {
         if score > highScore {
             highScore = score
+            print("High score now - \(highScore)")
             updateHighScoreTextLabel()
         }
         stateGame = .notRunning
@@ -315,9 +336,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
         menuLayer.display(message: "Game over!", score: score)
+        print("Game over!")
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
+        print("Sound of game over play.")
+        DispatchQueue.main.async {
+            self.santaWalkingFrames.removeAll()
+            self.santaJumpFrames.removeAll()
+        }
         addChild(menuLayer)
-        santaWalkingFrames.removeAll()
     }
     //configure brick
     func spawnBrick (atPosition position: CGPoint, kindBriсk: KindBrick) -> SKSpriteNode {
@@ -344,6 +370,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         candy.physicsBody?.categoryBitMask = PhysicsCategory.candy
         candy.physicsBody?.affectedByGravity = false
         candies.append(candy)
+        print("Candy was added on screen.")
     }
     //configure remove candy
     func removeСandy (_ candy: SKSpriteNode) {
@@ -351,6 +378,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if let candyIndex = candies.firstIndex(of: candy) {
             candies.remove(at: candyIndex)
         }
+        print("Candy was removed from screen.")
     }
     //configure water
     func spawnWater(atPosition position: CGPoint) -> SKSpriteNode {
@@ -364,6 +392,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         water.physicsBody?.affectedByGravity = false
         water.physicsBody?.categoryBitMask = PhysicsCategory.water
         water.physicsBody?.collisionBitMask = 0
+        print("Water created on screen.")
         return water
     }
     //configure tree
@@ -380,12 +409,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         tree.physicsBody?.affectedByGravity = false
         tree.physicsBody?.categoryBitMask = PhysicsCategory.tree
         tree.physicsBody?.collisionBitMask = 0
+        print("Trees created on screen.")
         return tree
     }
     func updateBricks(withScrollAmount currentScrollAmount: CGFloat) {
         // position of first brick
-        var farthestRightBrickX: CGFloat = 0.0
-        //update position of brick if position is not on screen remove brick else update new position for x
+        var farthestRightBrickX: CGFloat = 0.0 //update position of brick if position is not on screen remove brick else update new position for x
         for brick in bricks {
             let newX = brick.position.x - currentScrollAmount
             if newX < -brickSize.width {
@@ -418,11 +447,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 kindBrick = .last
                 let lastBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = lastBrick.position.x
-                var foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
                 if brickLevel == .high {
+                    let foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX + brickSize.width, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
                     farthestRightBrickX = foundationBrick.position.x
                 }
-                let gap = 51.0 * scrollSpeed
+                let gap: CGFloat = 255
                 brickX += gap
                 // create candy where gap
                 let randomcandyYamount = CGFloat(arc4random_uniform(150))
@@ -438,7 +467,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let firstBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY), kindBriсk: kindBrick)
                 farthestRightBrickX = firstBrick.position.x
                 if brickLevel == .high {
-                    foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
+                    let foundationBrick = spawnBrick(atPosition: CGPoint(x: brickX, y: brickY - brickLevel.rawValue), kindBriсk: .foundation)
                     farthestRightBrickX = foundationBrick.position.x
                 }
             }
@@ -473,6 +502,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             candy.position = CGPoint(x: candyX, y: candy.position.y)
             if candy.position.x < 0.0 {
                 removeСandy(candy)
+                print("Candy has gone from screen.")
             }
         }
     }
@@ -481,6 +511,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let elapsedTime = currentTime - lastScoreUpdateTime
         if elapsedTime > 1.0 {
             score += Int(scrollSpeed)
+            print("Score now - \(score)")
             lastScoreUpdateTime = currentTime
             updateScoreTextLable()
         }
@@ -492,7 +523,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let isTippedOver = santa.zRotation > maxRotation || santa.zRotation < -maxRotation
         if isOffScreen || isTippedOver {
             gameOver()
+            print("Santa was gone from screen. Game over!")
         }
+        // TODO: - when change santa position on screen return to his place
+//        if santa.position.x != frame.midX / 2.0 && !santa.isOnGroud {
+//            santa.position.x = frame.midX / 2.0
+//        }
     }
 }
 
