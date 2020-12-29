@@ -205,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //animate walking santa
     func santaAnimate() {
-        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.05)
+        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.075)
         santa.run(SKAction.repeatForever(santaWalkAnimate))
     }
     //animate Santa jump
