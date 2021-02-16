@@ -25,7 +25,26 @@
 		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
 		DBB56FF3254435460030A2E1 /* ho-ho-ho.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */; };
+		DBEBFC3125DC0EB0006725EC /* Funny_SantaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */; };
+		DBEBFC4125DC0F9B006725EC /* Funny_SantaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBFC4025DC0F9B006725EC /* Funny_SantaTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DBEBFC3325DC0EB0006725EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB5A60F724DDD8DC001A724F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB5A60FE24DDD8DC001A724F;
+			remoteInfo = "Funny Santa";
+		};
+		DBEBFC4325DC0F9B006725EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DB5A60F724DDD8DC001A724F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DB5A60FE24DDD8DC001A724F;
+			remoteInfo = "Funny Santa";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DB4E24672590C5280072E79E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -48,10 +67,30 @@
 		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
 		DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ho-ho-ho.wav"; sourceTree = "<group>"; };
+		DBEBFC2E25DC0EAF006725EC /* Funny SantaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Funny SantaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funny_SantaUITests.swift; sourceTree = "<group>"; };
+		DBEBFC3225DC0EB0006725EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBEBFC3E25DC0F9B006725EC /* Funny SantaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Funny SantaTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBEBFC4025DC0F9B006725EC /* Funny_SantaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funny_SantaTests.swift; sourceTree = "<group>"; };
+		DBEBFC4225DC0F9B006725EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DB5A60FC24DDD8DC001A724F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBEBFC2B25DC0EAF006725EC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBEBFC3B25DC0F9B006725EC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -100,6 +139,8 @@
 			isa = PBXGroup;
 			children = (
 				DB5A610124DDD8DC001A724F /* Funny Santa */,
+				DBEBFC2F25DC0EB0006725EC /* Funny SantaUITests */,
+				DBEBFC3F25DC0F9B006725EC /* Funny SantaTests */,
 				DB5A610024DDD8DC001A724F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +149,8 @@
 			isa = PBXGroup;
 			children = (
 				DB5A60FF24DDD8DC001A724F /* Funny Santa.app */,
+				DBEBFC2E25DC0EAF006725EC /* Funny SantaUITests.xctest */,
+				DBEBFC3E25DC0F9B006725EC /* Funny SantaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +168,24 @@
 				DB5A611424DDD8DE001A724F /* Info.plist */,
 			);
 			path = "Funny Santa";
+			sourceTree = "<group>";
+		};
+		DBEBFC2F25DC0EB0006725EC /* Funny SantaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */,
+				DBEBFC3225DC0EB0006725EC /* Info.plist */,
+			);
+			path = "Funny SantaUITests";
+			sourceTree = "<group>";
+		};
+		DBEBFC3F25DC0F9B006725EC /* Funny SantaTests */ = {
+			isa = PBXGroup;
+			children = (
+				DBEBFC4025DC0F9B006725EC /* Funny_SantaTests.swift */,
+				DBEBFC4225DC0F9B006725EC /* Info.plist */,
+			);
+			path = "Funny SantaTests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,18 +208,62 @@
 			productReference = DB5A60FF24DDD8DC001A724F /* Funny Santa.app */;
 			productType = "com.apple.product-type.application";
 		};
+		DBEBFC2D25DC0EAF006725EC /* Funny SantaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBEBFC3525DC0EB0006725EC /* Build configuration list for PBXNativeTarget "Funny SantaUITests" */;
+			buildPhases = (
+				DBEBFC2A25DC0EAF006725EC /* Sources */,
+				DBEBFC2B25DC0EAF006725EC /* Frameworks */,
+				DBEBFC2C25DC0EAF006725EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBEBFC3425DC0EB0006725EC /* PBXTargetDependency */,
+			);
+			name = "Funny SantaUITests";
+			productName = "Funny SantaUITests";
+			productReference = DBEBFC2E25DC0EAF006725EC /* Funny SantaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		DBEBFC3D25DC0F9B006725EC /* Funny SantaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DBEBFC4525DC0F9B006725EC /* Build configuration list for PBXNativeTarget "Funny SantaTests" */;
+			buildPhases = (
+				DBEBFC3A25DC0F9B006725EC /* Sources */,
+				DBEBFC3B25DC0F9B006725EC /* Frameworks */,
+				DBEBFC3C25DC0F9B006725EC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DBEBFC4425DC0F9B006725EC /* PBXTargetDependency */,
+			);
+			name = "Funny SantaTests";
+			productName = "Funny SantaTests";
+			productReference = DBEBFC3E25DC0F9B006725EC /* Funny SantaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DB5A60F724DDD8DC001A724F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1160;
+				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Oleksandr Solokha";
 				TargetAttributes = {
 					DB5A60FE24DDD8DC001A724F = {
 						CreatedOnToolsVersion = 11.6;
+					};
+					DBEBFC2D25DC0EAF006725EC = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = DB5A60FE24DDD8DC001A724F;
+					};
+					DBEBFC3D25DC0F9B006725EC = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = DB5A60FE24DDD8DC001A724F;
 					};
 				};
 			};
@@ -176,6 +281,8 @@
 			projectRoot = "";
 			targets = (
 				DB5A60FE24DDD8DC001A724F /* Funny Santa */,
+				DBEBFC2D25DC0EAF006725EC /* Funny SantaUITests */,
+				DBEBFC3D25DC0F9B006725EC /* Funny SantaTests */,
 			);
 		};
 /* End PBXProject section */
@@ -201,6 +308,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBEBFC2C25DC0EAF006725EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBEBFC3C25DC0F9B006725EC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -216,7 +337,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBEBFC2A25DC0EAF006725EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBEBFC3125DC0EB0006725EC /* Funny_SantaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DBEBFC3A25DC0F9B006725EC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DBEBFC4125DC0F9B006725EC /* Funny_SantaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DBEBFC3425DC0EB0006725EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB5A60FE24DDD8DC001A724F /* Funny Santa */;
+			targetProxy = DBEBFC3325DC0EB0006725EC /* PBXContainerItemProxy */;
+		};
+		DBEBFC4425DC0F9B006725EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DB5A60FE24DDD8DC001A724F /* Funny Santa */;
+			targetProxy = DBEBFC4325DC0F9B006725EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DB5A610C24DDD8DC001A724F /* Main.storyboard */ = {
@@ -394,6 +544,88 @@
 			};
 			name = Release;
 		};
+		DBEBFC3625DC0EB0006725EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X8NNCQ3HW6;
+				INFOPLIST_FILE = "Funny SantaUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-SantaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Funny Santa";
+			};
+			name = Debug;
+		};
+		DBEBFC3725DC0EB0006725EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X8NNCQ3HW6;
+				INFOPLIST_FILE = "Funny SantaUITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-SantaUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Funny Santa";
+			};
+			name = Release;
+		};
+		DBEBFC4625DC0F9B006725EC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X8NNCQ3HW6;
+				INFOPLIST_FILE = "Funny SantaTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-SantaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Funny Santa.app/Funny Santa";
+			};
+			name = Debug;
+		};
+		DBEBFC4725DC0F9B006725EC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X8NNCQ3HW6;
+				INFOPLIST_FILE = "Funny SantaTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-SantaTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Funny Santa.app/Funny Santa";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -411,6 +643,24 @@
 			buildConfigurations = (
 				DB5A611824DDD8DE001A724F /* Debug */,
 				DB5A611924DDD8DE001A724F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBEBFC3525DC0EB0006725EC /* Build configuration list for PBXNativeTarget "Funny SantaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBEBFC3625DC0EB0006725EC /* Debug */,
+				DBEBFC3725DC0EB0006725EC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DBEBFC4525DC0F9B006725EC /* Build configuration list for PBXNativeTarget "Funny SantaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBEBFC4625DC0F9B006725EC /* Debug */,
+				DBEBFC4725DC0F9B006725EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
