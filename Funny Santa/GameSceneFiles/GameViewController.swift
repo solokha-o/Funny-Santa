@@ -32,6 +32,8 @@ class GameViewController: UIViewController {
             
             view.showsFPS = true
             view.showsNodeCount = true
+            
+            createLocalNotifications()
         }
     }
     
@@ -49,5 +51,36 @@ class GameViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    //configure local notifications
+    func createLocalNotifications() {
+        //Configuring the notification content
+        let messages = ["🎅🏻 Santa want running! 🎄", "🎅🏻 Santa is missing you! 🎄", "🎅🏻 Let's play Fanny Santa! 🎄", "🎅🏻 Let's play before Santa will go to sleep! 🎄"]
+        let title = "Open Funny Santa 🎄"
+        let content = UNMutableNotificationContent()
+        content.sound = .default
+        content.title = title
+        var hour = 8
+        for message in messages {
+            content.body = message
+            // Configure the recurring date
+            var dateComponents = DateComponents()
+            dateComponents.calendar = Calendar.current
+            dateComponents.hour = hour
+            // Create the trigger as a repeating event
+            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+            // Create the request
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString,
+                        content: content, trigger: trigger)
+            // Schedule the request with the system.
+            let notificationCenter = UNUserNotificationCenter.current()
+            notificationCenter.add(request) { (error) in
+               if error != nil {
+                  print("Error with creating notifications: \(error!)")
+               }
+            }
+            hour += 4
+        }
     }
 }

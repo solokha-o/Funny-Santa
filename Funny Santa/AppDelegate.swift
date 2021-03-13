@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //asking permission to use notifications
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            
+            if error != nil {
+                print("Error with permission to use notifications: \(error!)")
+            }
+            else if granted {
+                print("User accept permission to use notifications")
+            } else {
+                print("User cancel permission to use notifications")
+            }
+            
+            // Enable or disable features based on the authorization.
+        }
         return true
     }
 
