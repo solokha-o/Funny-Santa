@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             // Enable or disable features based on the authorization.
         }
+        //removing all notification that was created before
+        center.removeAllPendingNotificationRequests()
         return true
     }
 
