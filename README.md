@@ -11,3 +11,4 @@ It is very funny game.</br>
 
 ![f400aa1e5c7c1bdb2fec2d514b8a655440a2acd0](https://user-images.githubusercontent.com/15982074/110774414-723ff000-8266-11eb-9a21-2b5d2a95440b.gif)
 
+MIT-License.
