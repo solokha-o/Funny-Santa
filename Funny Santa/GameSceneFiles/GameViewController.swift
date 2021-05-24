@@ -53,7 +53,7 @@ class GameViewController: UIViewController {
         return true
     }
     //configure local notifications
-    func createLocalNotifications() {
+    private func createLocalNotifications() {
         //Configuring the notification content
         let messages = ["🎅🏻 Santa want running! 🎄", "🎅🏻 Santa is missing you! 🎄", "🎅🏻 Let's play Fanny Santa! 🎄", "🎅🏻 Let's play before Santa will go to sleep! 🎄"]
         let title = "Open Funny Santa 🎄"

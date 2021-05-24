@@ -10,12 +10,12 @@ import SpriteKit
 
 class Santa: SKSpriteNode {
     
-    var velocity = CGPoint.zero
-    var minimumY : CGFloat = 0.0
-    var jumpSpeed : CGFloat = 20.0
-    var isOnGroud = true
+    public var velocity = CGPoint.zero
+    public var minimumY : CGFloat = 0.0
+    public var jumpSpeed : CGFloat = 20.0
+    public var isOnGroud = true
     //configure physics texture of santa
-    func setupPhysicsBody() {
+    public func setupPhysicsBody() {
         if let santaTexture = texture {
             physicsBody = SKPhysicsBody(texture: santaTexture, size: size)
             physicsBody?.isDynamic = true
@@ -28,7 +28,7 @@ class Santa: SKSpriteNode {
         }
     }
     //create snow splash when santa jump
-    func createSnowSplash() {
+    public func createSnowSplash() {
         if let snowSplashsNode = SKEmitterNode(fileNamed: "SnowSplash") {
             snowSplashsNode.position = CGPoint(x: 0.0, y: -50.0)
             addChild(snowSplashsNode)
@@ -40,7 +40,7 @@ class Santa: SKSpriteNode {
         }
     }
     //create water splash when santa falls to water
-    func createWaterSplash() {
+    public func createWaterSplash() {
         if let waterSplashsNode = SKEmitterNode(fileNamed: "WaterSplash") {
             waterSplashsNode.position = CGPoint(x: 0.0, y: -50.0)
             addChild(waterSplashsNode)

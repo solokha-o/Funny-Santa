@@ -10,8 +10,8 @@ import UIKit
 import SpriteKit
 
 class MenuLayer: SKSpriteNode {
-    //on display info about state of game and resault
-    func display(message: String, score: Int?) {
+    //on display info about state of game and result
+    open func display(message: String, score: Int?) {
         // display message about state of game
         let messageLable = SKLabelNode(text: message)
         let messageX = -frame.width
