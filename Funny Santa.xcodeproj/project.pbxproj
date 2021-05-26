@@ -21,6 +21,8 @@
 		DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A611C24DDDA9B001A724F /* MenuLayer.swift */; };
 		DB5A612324DDDBE3001A724F /* candy.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* candy.wav */; };
 		DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB6E4A1F24F57635007E4098 /* SnowSplash.sks */; };
+		DB75659A265ECD2900F48A4F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB756599265ECD2900F48A4F /* String+Localized.swift */; };
+		DB75659D265ECD4900F48A4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB75659F265ECD4900F48A4F /* Localizable.strings */; };
 		DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
 		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
@@ -63,6 +65,8 @@
 		DB5A611C24DDDA9B001A724F /* MenuLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuLayer.swift; sourceTree = "<group>"; };
 		DB5A612124DDDBE3001A724F /* candy.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = candy.wav; sourceTree = "<group>"; };
 		DB6E4A1F24F57635007E4098 /* SnowSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowSplash.sks; sourceTree = "<group>"; };
+		DB756599265ECD2900F48A4F /* String+Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
+		DB75659E265ECD4900F48A4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSong.mp3; sourceTree = "<group>"; };
 		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 				DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */,
 				DB52047D2518C5C80071A837 /* waterSplash.wav */,
 				DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */,
+				DB756594265ECCBA00F48A4F /* Localization */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -168,6 +173,15 @@
 				DB5A611424DDD8DE001A724F /* Info.plist */,
 			);
 			path = "Funny Santa";
+			sourceTree = "<group>";
+		};
+		DB756594265ECCBA00F48A4F /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				DB756599265ECD2900F48A4F /* String+Localized.swift */,
+				DB75659F265ECD4900F48A4F /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		DBEBFC2F25DC0EB0006725EC /* Funny SantaUITests */ = {
@@ -295,6 +309,7 @@
 				DB5204772518C2DC0071A837 /* jump.wav in Resources */,
 				DBB56FF3254435460030A2E1 /* ho-ho-ho.wav in Resources */,
 				DB5A610E24DDD8DC001A724F /* Main.storyboard in Resources */,
+				DB75659D265ECD4900F48A4F /* Localizable.strings in Resources */,
 				DB5204812518C9C10071A837 /* gameOver.wav in Resources */,
 				DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */,
 				DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */,
@@ -329,6 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB75659A265ECD2900F48A4F /* String+Localized.swift in Sources */,
 				DB5A610924DDD8DC001A724F /* GameScene.swift in Sources */,
 				DB5A611B24DDD9FD001A724F /* Santa.swift in Sources */,
 				DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */,
@@ -383,6 +399,14 @@
 				DB5A611224DDD8DE001A724F /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DB75659F265ECD4900F48A4F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB75659E265ECD4900F48A4F /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
