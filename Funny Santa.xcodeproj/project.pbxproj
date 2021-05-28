@@ -23,6 +23,26 @@
 		DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB6E4A1F24F57635007E4098 /* SnowSplash.sks */; };
 		DB75659A265ECD2900F48A4F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB756599265ECD2900F48A4F /* String+Localized.swift */; };
 		DB75659D265ECD4900F48A4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB75659F265ECD4900F48A4F /* Localizable.strings */; };
+		DB7565A7266154BE00F48A4F /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB756599265ECD2900F48A4F /* String+Localized.swift */; };
+		DB7565A8266154BE00F48A4F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A610824DDD8DC001A724F /* GameScene.swift */; };
+		DB7565A9266154BE00F48A4F /* Santa.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A611A24DDD9FD001A724F /* Santa.swift */; };
+		DB7565AA266154BE00F48A4F /* MenuLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A611C24DDDA9B001A724F /* MenuLayer.swift */; };
+		DB7565AB266154BE00F48A4F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A610A24DDD8DC001A724F /* GameViewController.swift */; };
+		DB7565AC266154BE00F48A4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5A610224DDD8DC001A724F /* AppDelegate.swift */; };
+		DB7565AF266154BE00F48A4F /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5204762518C2DB0071A837 /* jump.wav */; };
+		DB7565B0266154BE00F48A4F /* ho-ho-ho.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */; };
+		DB7565B1266154BE00F48A4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5A610C24DDD8DC001A724F /* Main.storyboard */; };
+		DB7565B2266154BE00F48A4F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DB75659F265ECD4900F48A4F /* Localizable.strings */; };
+		DB7565B3266154BE00F48A4F /* gameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5204802518C9C10071A837 /* gameOver.wav */; };
+		DB7565B4266154BE00F48A4F /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
+		DB7565B5266154BE00F48A4F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
+		DB7565B6266154BE00F48A4F /* candy.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5A612124DDDBE3001A724F /* candy.wav */; };
+		DB7565B7266154BE00F48A4F /* SnowSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB6E4A1F24F57635007E4098 /* SnowSplash.sks */; };
+		DB7565B8266154BE00F48A4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB5A610F24DDD8DE001A724F /* Assets.xcassets */; };
+		DB7565B9266154BE00F48A4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB5A611124DDD8DE001A724F /* LaunchScreen.storyboard */; };
+		DB7565BA266154BE00F48A4F /* waterSplash.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB52047D2518C5C80071A837 /* waterSplash.wav */; };
+		DB7565BB266154BE00F48A4F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB4E24672590C5280072E79E /* GameScene.sks */; };
+		DB7565BC266154BE00F48A4F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
 		DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
 		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
@@ -71,6 +91,8 @@
 		DB7565A12660102800F48A4F /* fi-FI */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fi-FI"; path = "fi-FI.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		DB7565A22660102800F48A4F /* fi-FI */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "fi-FI"; path = "fi-FI.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DB7565A4266141D100F48A4F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		DB7565C0266154BE00F48A4F /* Funny Santa-iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Funny Santa-iPad.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB7565C2266154BE00F48A4F /* Funny Santa copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Funny Santa copy-Info.plist"; path = "/Users/oleksandrsolokha/Desktop/Swift/Funny-Santa/Funny Santa copy-Info.plist"; sourceTree = "<absolute>"; };
 		DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSong.mp3; sourceTree = "<group>"; };
 		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
@@ -85,6 +107,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		DB5A60FC24DDD8DC001A724F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB7565AD266154BE00F48A4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -147,10 +176,12 @@
 		DB5A60F624DDD8DC001A724F = {
 			isa = PBXGroup;
 			children = (
+				DB7565C1266154BE00F48A4F /* Resources-iPad */,
 				DB5A610124DDD8DC001A724F /* Funny Santa */,
 				DBEBFC2F25DC0EB0006725EC /* Funny SantaUITests */,
 				DBEBFC3F25DC0F9B006725EC /* Funny SantaTests */,
 				DB5A610024DDD8DC001A724F /* Products */,
+				DB7565C2266154BE00F48A4F /* Funny Santa copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +191,7 @@
 				DB5A60FF24DDD8DC001A724F /* Funny Santa.app */,
 				DBEBFC2E25DC0EAF006725EC /* Funny SantaUITests.xctest */,
 				DBEBFC3E25DC0F9B006725EC /* Funny SantaTests.xctest */,
+				DB7565C0266154BE00F48A4F /* Funny Santa-iPad.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -186,6 +218,13 @@
 				DB75659F265ECD4900F48A4F /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		DB7565C1266154BE00F48A4F /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Resources-iPad";
 			sourceTree = "<group>";
 		};
 		DBEBFC2F25DC0EB0006725EC /* Funny SantaUITests */ = {
@@ -224,6 +263,23 @@
 			name = "Funny Santa";
 			productName = "Funny Santa";
 			productReference = DB5A60FF24DDD8DC001A724F /* Funny Santa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DB7565A5266154BE00F48A4F /* Funny Santa-iPad */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB7565BD266154BE00F48A4F /* Build configuration list for PBXNativeTarget "Funny Santa-iPad" */;
+			buildPhases = (
+				DB7565A6266154BE00F48A4F /* Sources */,
+				DB7565AD266154BE00F48A4F /* Frameworks */,
+				DB7565AE266154BE00F48A4F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Funny Santa-iPad";
+			productName = "Funny Santa";
+			productReference = DB7565C0266154BE00F48A4F /* Funny Santa-iPad.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DBEBFC2D25DC0EAF006725EC /* Funny SantaUITests */ = {
@@ -302,6 +358,7 @@
 				DB5A60FE24DDD8DC001A724F /* Funny Santa */,
 				DBEBFC2D25DC0EAF006725EC /* Funny SantaUITests */,
 				DBEBFC3D25DC0F9B006725EC /* Funny SantaTests */,
+				DB7565A5266154BE00F48A4F /* Funny Santa-iPad */,
 			);
 		};
 /* End PBXProject section */
@@ -325,6 +382,27 @@
 				DB52047E2518C5C80071A837 /* waterSplash.wav in Resources */,
 				DB4E24682590C5280072E79E /* GameScene.sks in Resources */,
 				DB908298251253F4001F1E7F /* Snowing.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB7565AE266154BE00F48A4F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB7565AF266154BE00F48A4F /* jump.wav in Resources */,
+				DB7565B0266154BE00F48A4F /* ho-ho-ho.wav in Resources */,
+				DB7565B1266154BE00F48A4F /* Main.storyboard in Resources */,
+				DB7565B2266154BE00F48A4F /* Localizable.strings in Resources */,
+				DB7565B3266154BE00F48A4F /* gameOver.wav in Resources */,
+				DB7565B4266154BE00F48A4F /* backgroundSong.mp3 in Resources */,
+				DB7565B5266154BE00F48A4F /* WaterSplash.sks in Resources */,
+				DB7565B6266154BE00F48A4F /* candy.wav in Resources */,
+				DB7565B7266154BE00F48A4F /* SnowSplash.sks in Resources */,
+				DB7565B8266154BE00F48A4F /* Assets.xcassets in Resources */,
+				DB7565B9266154BE00F48A4F /* LaunchScreen.storyboard in Resources */,
+				DB7565BA266154BE00F48A4F /* waterSplash.wav in Resources */,
+				DB7565BB266154BE00F48A4F /* GameScene.sks in Resources */,
+				DB7565BC266154BE00F48A4F /* Snowing.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +433,19 @@
 				DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */,
 				DB5A610B24DDD8DC001A724F /* GameViewController.swift in Sources */,
 				DB5A610324DDD8DC001A724F /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DB7565A6266154BE00F48A4F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB7565A7266154BE00F48A4F /* String+Localized.swift in Sources */,
+				DB7565A8266154BE00F48A4F /* GameScene.swift in Sources */,
+				DB7565A9266154BE00F48A4F /* Santa.swift in Sources */,
+				DB7565AA266154BE00F48A4F /* MenuLayer.swift in Sources */,
+				DB7565AB266154BE00F48A4F /* GameViewController.swift in Sources */,
+				DB7565AC266154BE00F48A4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,7 +638,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8NNCQ3HW6;
 				INFOPLIST_FILE = "Funny Santa/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,7 +658,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8NNCQ3HW6;
 				INFOPLIST_FILE = "Funny Santa/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -576,6 +667,46 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		DB7565BE266154BE00F48A4F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X8NNCQ3HW6;
+				INFOPLIST_FILE = "Funny Santa copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-Santa";
+				PRODUCT_NAME = "Funny Santa-iPad";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		DB7565BF266154BE00F48A4F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X8NNCQ3HW6;
+				INFOPLIST_FILE = "Funny Santa copy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-Santa";
+				PRODUCT_NAME = "Funny Santa-iPad";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
@@ -678,6 +809,15 @@
 			buildConfigurations = (
 				DB5A611824DDD8DE001A724F /* Debug */,
 				DB5A611924DDD8DE001A724F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DB7565BD266154BE00F48A4F /* Build configuration list for PBXNativeTarget "Funny Santa-iPad" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB7565BE266154BE00F48A4F /* Debug */,
+				DB7565BF266154BE00F48A4F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -219,6 +219,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let xMid = frame.midX
         let yMid = frame.midY
         background.position = CGPoint(x: xMid, y: yMid)
+        background.size = self.size
         print("Background had setuped.\n Texture - \(String(describing: background.texture)).\n Background position on screen: x - \(background.position.x), y - \(background.position.y)./n")
         addChild(background)
     }
