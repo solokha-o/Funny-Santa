@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 //get physics category to objects of game
-struct PhysicsCategory {
+public struct PhysicsCategory {
     static let santa : UInt32 = 0x1 << 0
     static let brick : UInt32 = 0x1 << 1
     static let candy : UInt32 = 0x1 << 2
@@ -96,7 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.position = CGPoint(x: 0, y: 0)
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
-        menuLayer.display(message: "Press to Start game", score: nil)
+        menuLayer.display(message: "Press on screen \n to start game".localized, score: nil)
         addChild(menuLayer)
     }
     
@@ -253,7 +253,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure labels with points gamer and best resault
     private func setupLabels() {
-        let scoreTextLabel : SKLabelNode = SKLabelNode(text: "Points")
+        let scoreTextLabel : SKLabelNode = SKLabelNode(text: "Points".localized)
         scoreTextLabel.position = CGPoint(x: 14.0, y: frame.size.height - 20.0)
         scoreTextLabel.horizontalAlignmentMode = .left
         scoreTextLabel.fontName = "Courier-Bold"
@@ -270,7 +270,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.zPosition = 20
         addChild(scoreLabel)
         print("Label of score had seted.")
-        let highScoreTextLabel: SKLabelNode = SKLabelNode(text: "Best resault")
+        let highScoreTextLabel: SKLabelNode = SKLabelNode(text: "Best result".localized)
         highScoreTextLabel.position = CGPoint(x: frame.size.width - 14.0, y: frame.size.height - 20.0)
         highScoreTextLabel.horizontalAlignmentMode = .right
         highScoreTextLabel.fontName = "Courier-Bold"; highScoreTextLabel.fontSize = 18.0
@@ -335,7 +335,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.position = CGPoint(x: 0, y: 0)
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
-        menuLayer.display(message: "Game over!", score: score)
+        menuLayer.display(message: "Game over!".localized, score: score)
         print("Game over!")
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
         print("Sound of game over play.")

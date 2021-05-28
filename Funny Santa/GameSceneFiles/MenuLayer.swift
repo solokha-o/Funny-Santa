@@ -14,6 +14,8 @@ class MenuLayer: SKSpriteNode {
     open func display(message: String, score: Int?) {
         // display message about state of game
         let messageLable = SKLabelNode(text: message)
+        messageLable.numberOfLines = 0
+        messageLable.horizontalAlignmentMode = .center
         let messageX = -frame.width
         let messageY = frame.height / 2.0
         messageLable.position = CGPoint(x: messageX, y: messageY)
@@ -28,7 +30,7 @@ class MenuLayer: SKSpriteNode {
         messageLable.run(messageAction)
         //display score of game
         if let scoreToDisplay = score {
-            let scoreString = String(format: "Score: %04d", scoreToDisplay)
+            let scoreString = String(format: "Score: %04d".localized, scoreToDisplay)
             let scoreLabel = SKLabelNode(text: scoreString)
             let scoreLabelX = frame.width
             let scoreLabelY = messageLable.position.y - messageLable.frame.height

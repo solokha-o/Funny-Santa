@@ -55,8 +55,8 @@ class GameViewController: UIViewController {
     //configure local notifications
     private func createLocalNotifications() {
         //Configuring the notification content
-        let messages = ["🎅🏻 Santa want running! 🎄", "🎅🏻 Santa is missing you! 🎄", "🎅🏻 Let's play Fanny Santa! 🎄", "🎅🏻 Let's play before Santa will go to sleep! 🎄"]
-        let title = "Open Funny Santa 🎄"
+        let messages = ["🎅🏻 Santa want running! 🎄".localized, "🎅🏻 Santa is missing you! 🎄".localized, "🎅🏻 Let's play Fanny Santa! 🎄".localized, "🎅🏻 Let's play before Santa will go to sleep! 🎄".localized]
+        let title = "Open Funny Santa 🎄".localized
         let content = UNMutableNotificationContent()
         content.sound = .default
         content.title = title
