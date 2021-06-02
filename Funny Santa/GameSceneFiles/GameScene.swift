@@ -182,10 +182,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //load image from assets to array
     private func loadSantaImage() {
-        let santaAnimatedAtlas = SKTextureAtlas(named: "Santa")
-        var walkFrames: [SKTexture] = []
-        let numImages = santaAnimatedAtlas.textureNames.count
-        for i in 1...numImages {
+        var walkFrames = [SKTexture]()
+        for i in 1...11 {
             let imageName = "Santa\(i)"
             walkFrames.append(SKTexture(imageNamed: imageName))
         }
@@ -197,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // build frame santa on scene
     private func buildSanta() {
-        let firstTextureFrame = santaWalkingFrames[0]
+        let firstTextureFrame = santaWalkingFrames.first
         santa = Santa(texture: firstTextureFrame)
         santa.setupPhysicsBody()
         print("Santa had loaded.\n Texture - \(String(describing: santa.texture)).\n Santa position on screen: x - \(santa.position.x), y - \(santa.position.y).\n Santa scale: x - \(santa.xScale), y - \(santa.yScale).\n Santa size: height -  \(santa.size.height), width - \(santa.size.width).\n Santa anchor: \(santa.anchorPoint).\n Santa rotation: \(santa.zRotation)")
