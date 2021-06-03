@@ -70,7 +70,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
-        loadSantaImage()
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
         // add contact delegate
         physicsWorld.contactDelegate = self
@@ -83,6 +82,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
         view.addGestureRecognizer(tapGesture)
         //call setup and configure function
+        loadSantaImage()
         setupBackground()
         setBackgroundSong()
         setSnowing()
@@ -123,9 +123,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if velocityY == 0.0 {
                 santaAnimate()
             }
-            else if !santa.isOnGroud {
-                santaJumpAnimate()
-            }
         }
         // santa animate when on ground
         updateCandy(withScrollAmount: currentScrollAmount)
@@ -140,6 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                 santa.isOnGroud = false
+                santaJumpAnimate()
                 print("Played sound of Santa's jump")
                 print("Santa jump.")
             }
@@ -182,12 +180,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //load image from assets to array
     private func loadSantaImage() {
-        var walkFrames = [SKTexture]()
-        for i in 1...11 {
+        for i in 1...10 {
             let imageName = "Santa\(i)"
-            walkFrames.append(SKTexture(imageNamed: imageName))
+            santaWalkingFrames.append(SKTexture(imageNamed: imageName))
         }
-        santaWalkingFrames = walkFrames
         print("Images for Santa walking are load: \(santaWalkingFrames)")
         let santaJumpTexture = SKTexture(imageNamed: "SantaJump")
         santaJumpFrames.append(santaJumpTexture)
@@ -203,12 +199,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //animate walking santa
     private func santaAnimate() {
-        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.075)
+        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.075, resize: false, restore: true)
         santa.run(SKAction.repeatForever(santaWalkAnimate))
     }
     //animate Santa jump
     private func santaJumpAnimate() {
-        let santaJumpAction = SKAction.animate(with: santaJumpFrames, timePerFrame: 0.01)
+        let santaJumpAction = SKAction.animate(with: santaJumpFrames, timePerFrame: 0.05)
         santa.run(SKAction.repeatForever(santaJumpAction))
     }
     //setup background image
