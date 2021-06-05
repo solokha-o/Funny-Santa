@@ -70,6 +70,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
+        loadSantaImage()
         physicsWorld.gravity = CGVector(dx: 0.0, dy: -6.0)
         // add contact delegate
         physicsWorld.contactDelegate = self
@@ -82,7 +83,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
         view.addGestureRecognizer(tapGesture)
         //call setup and configure function
-        loadSantaImage()
         setupBackground()
         setBackgroundSong()
         setSnowing()
@@ -119,11 +119,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // call function update node by currentScrollAmount
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
-        if let velocityY = santa.physicsBody?.velocity.dy {
-            if velocityY == 0.0 {
-                santaAnimate()
-            }
-        }
+        //TODO: - fix animate running and jumping santa
+//        if let velocityY = santa.physicsBody?.velocity.dy {
+//            if velocityY == 0.0 {
+//                santaAnimate()
+//            }
+//        }
         // santa animate when on ground
         updateCandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
@@ -137,7 +138,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                 santa.isOnGroud = false
-                santaJumpAnimate()
                 print("Played sound of Santa's jump")
                 print("Santa jump.")
             }
