@@ -81,9 +81,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
-        // add tapGesture to scene
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(GameScene.handleTap(tapGesture:)))
-        view.addGestureRecognizer(tapGesture)
         //call setup and configure function
         setupBackground()
         setBackgroundSong()
@@ -123,32 +120,36 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         updateBricks(withScrollAmount: currentScrollAmount)
         updateSanta()
         //TODO: - fix animate running and jumping santa
-//        if let velocityY = santa.physicsBody?.velocity.dy {
-//            if velocityY == 0.0 {
-//                santaAnimate()
-//            }
-//        }
+        //        if let velocityY = santa.physicsBody?.velocity.dy {
+        //            if velocityY == 0.0 {
+        //                santaAnimate()
+        //            }
+        //        }
         // santa animate when on ground
         updateCandy(withScrollAmount: currentScrollAmount)
         //call function update node by currentTime
         updateScore(withCurrentTime: currentTime)
     }
-    //configure tapGesture
-    @objc private func handleTap(tapGesture: UITapGestureRecognizer) {
-        if stateGame == .running {
-            if santa.isOnGroud {
+    //configure multi-touch gesture
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in:self)
+            if let node = self.atPoint(location) as? SKSpriteNode, node.name == "jumpButton", santa.isOnGroud {
+                // if sprite is jumpButton configure jump of Santa
                 // sound when santa jump
                 run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
                 santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                 santa.isOnGroud = false
                 print("Played sound of Santa's jump")
                 print("Santa jump.")
+                
+            } else {
+                if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
+                    menuLayer.removeFromParent()
+                    startGame()
+                }
             }
-        } else {
-            if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
-                menuLayer.removeFromParent()
-                startGame()
-            }
+            
         }
     }
     // MARK:- SKPhysicsContactDelegate Methods
@@ -523,13 +524,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("Santa was gone from screen. Game over!")
         }
         // TODO: - when change santa position on screen return to his place
-//        if santa.position.x != frame.midX / 2.0 && !santa.isOnGroud {
-//            santa.position.x = frame.midX / 2.0
-//        }
+        //        if santa.position.x != frame.midX / 2.0 && !santa.isOnGroud {
+        //            santa.position.x = frame.midX / 2.0
+        //        }
     }
     //configure sprite of jump button
     private func setupJumpButton() {
         jumpButton = SKSpriteNode(imageNamed: "jump")
+        jumpButton.name = "jumpButton"
         let jumpButtonX = frame.midX / 0.60
         let jumpButtonY = frame.midY / 3.5
         jumpButton.position = CGPoint(x: jumpButtonX, y: jumpButtonY)
