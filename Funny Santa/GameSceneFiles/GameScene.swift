@@ -67,6 +67,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var stateGame = StateGame.notRunning
     //create kindBrick instance
     private var kindBrick = KindBrick.main
+    //create sprite of jump button
+    private var jumpButton = SKSpriteNode()
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
@@ -85,6 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //call setup and configure function
         setupBackground()
         setBackgroundSong()
+        setupJumpButton()
         setSnowing()
         setupLabels()
         buildSanta()
@@ -238,7 +241,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let santaX = frame.midX / 2.0
         let santaY = santa.frame.height / 2.0 + 64.0
         santa.position = CGPoint(x: santaX, y: santaY)
-        santa.zPosition = 10.0
         santa.minimumY = santaY
         santa.zPosition = 0.0
         santa.physicsBody?.velocity = CGVector(dx: 0.0, dy: 0.0)
@@ -524,6 +526,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        if santa.position.x != frame.midX / 2.0 && !santa.isOnGroud {
 //            santa.position.x = frame.midX / 2.0
 //        }
+    }
+    //configure sprite of jump button
+    private func setupJumpButton() {
+        jumpButton = SKSpriteNode(imageNamed: "jump")
+        let jumpButtonX = frame.midX / 0.60
+        let jumpButtonY = frame.midY / 3.5
+        jumpButton.position = CGPoint(x: jumpButtonX, y: jumpButtonY)
+        jumpButton.zPosition = 15.0
+        addChild(jumpButton)
     }
 }
 
