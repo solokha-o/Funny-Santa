@@ -304,6 +304,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stateGame = .running
         loadSantaImage()
         resetSanta()
+        //animate appear jump button on screen
+        appearJumpButton()
         score = 0
         print("Score had began - \(score)")
         scrollSpeed = startingScrollSpeed
@@ -342,6 +344,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.santaJumpFrames.removeAll()
         }
         addChild(menuLayer)
+        //animate remove jump button from screen
+        removeJumpButton()
     }
     //configure brick
     private func spawnBrick (atPosition position: CGPoint, kindBriсk: KindBrick) -> SKSpriteNode {
@@ -532,11 +536,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func setupJumpButton() {
         jumpButton = SKSpriteNode(imageNamed: "jump")
         jumpButton.name = "jumpButton"
-        let jumpButtonX = frame.midX / 0.60
+        let jumpButtonX = frame.midX / 0.1
         let jumpButtonY = frame.midY / 3.5
         jumpButton.position = CGPoint(x: jumpButtonX, y: jumpButtonY)
         jumpButton.zPosition = 15.0
+    }
+    //configure animate remove jump button from screen
+    private func removeJumpButton() {
+        let moveButtonX = frame.midX / 0.1
+        let moveJumpButton = SKAction.moveTo(x: moveButtonX, duration: 0.5)
+        let removeJumpButton = SKAction.removeFromParent()
+        let moveAndRemoveJumpButton = SKAction.sequence([moveJumpButton, removeJumpButton])
+        jumpButton.run(moveAndRemoveJumpButton)
+    }
+    //configure animate appear jump button on screen
+    private func appearJumpButton() {
+        let jumpButtonX = frame.midX / 0.60
+        let appearJumpButton = SKAction.moveTo(x: jumpButtonX, duration: 0.5)
         addChild(jumpButton)
+        jumpButton.run(appearJumpButton)
     }
 }
 
