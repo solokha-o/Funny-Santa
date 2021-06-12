@@ -134,11 +134,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in:self)
             guard let node = self.atPoint(location) as? SKSpriteNode else { return }
             switch node.name {
-                case "jumpButton":
+                case SpriteString.jumpButton.rawValue:
                     if santa.isOnGroud {
                         // if sprite is jumpButton configure jump of Santa
                         // sound when santa jump
-                        run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
+                        run(SKAction.playSoundFileNamed(AudioString.jumpSanta.rawValue, waitForCompletion: false))
                         santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                         santa.isOnGroud = false
                         //animate press jump button
@@ -150,7 +150,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         print("Santa jump.")
                     }
                 //if sprite is startButton configure start game
-                case "startButton":
+                case SpriteString.startButton.rawValue:
                     menuLayer.removeFromParent()
                     startGame()
                 default:
@@ -163,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in:self)
             guard let node = self.atPoint(location) as? SKSpriteNode else { return }
             switch node.name {
-                case "jumpButton":
+                case SpriteString.jumpButton.rawValue:
                     //animate jump button when press done
                     let alfaAction = SKAction.fadeAlpha(to: 1.0, duration: 0.5)
                     let scaleAction = SKAction.scale(to: 1.0, duration: 0.5)
@@ -189,8 +189,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 score += 50
                 print("Score now - \(score)")
                 //sound when take candy
-                run(SKAction.playSoundFileNamed("candy.wav", waitForCompletion: false))
-                run(SKAction.playSoundFileNamed("ho-ho-ho.wav", waitForCompletion: false))
+                run(SKAction.playSoundFileNamed(AudioString.candyTake.rawValue, waitForCompletion: false))
+                run(SKAction.playSoundFileNamed(AudioString.santaHoHo.rawValue, waitForCompletion: false))
                 print("Played sound when Santa take a candy")
                 print("Santa take candy")
                 updateScoreTextLable()
@@ -198,7 +198,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //configure contact santa and water
         } else if contact.bodyA.categoryBitMask == PhysicsCategory.santa && contact.bodyB.categoryBitMask == PhysicsCategory.water {
             //create water splash and sound when santa fills to water
-            run(SKAction.playSoundFileNamed("waterSplash", waitForCompletion: true))
+            run(SKAction.playSoundFileNamed(AudioString.waterSplashSound.rawValue, waitForCompletion: true))
             print("Santa had fell to water.")
             santa.createWaterSplash()
             scrollSpeed = 0.0
@@ -207,11 +207,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //load image from assets to array
     private func loadSantaImage() {
         for i in 1...10 {
-            let imageName = "Santa\(i)"
+            let imageName = SpriteString.santa.rawValue + String(i)
             santaWalkingFrames.append(SKTexture(imageNamed: imageName))
         }
         print("Images for Santa walking are load: \(santaWalkingFrames)")
-        let santaJumpTexture = SKTexture(imageNamed: "SantaJump")
+        let santaJumpTexture = SKTexture(imageNamed: SpriteString.santaJump.rawValue)
         santaJumpFrames.append(santaJumpTexture)
         print("Images for Santa jamp are load: \(santaJumpFrames)")
     }
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //setup background image
     private func setupBackground() {
-        let background = SKSpriteNode(imageNamed: "background")
+        let background = SKSpriteNode(imageNamed: SpriteString.background.rawValue)
         let xMid = frame.midX
         let yMid = frame.midY
         background.position = CGPoint(x: xMid, y: yMid)
@@ -245,7 +245,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //setup background song
     private func setBackgroundSong() {
-        let backgroundSong = SKAudioNode(fileNamed: "backgroundSong.mp3")
+        let backgroundSong = SKAudioNode(fileNamed: AudioString.backgroundSong.rawValue)
         addChild(backgroundSong)
         print("Play background song")
     }
@@ -384,7 +384,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure candy
     private func spawnСandy(atPosition position: CGPoint) {
-        let candy = SKSpriteNode(imageNamed: "candy")
+        let candy = SKSpriteNode(imageNamed: SpriteString.candy.rawValue)
         candy.position = position
         candy.zPosition = 8
         addChild(candy)
@@ -404,7 +404,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure water
     private func spawnWater(atPosition position: CGPoint) -> SKSpriteNode {
-        let water = SKSpriteNode(imageNamed: "water")
+        let water = SKSpriteNode(imageNamed: SpriteString.water.rawValue)
         water.position = position
         water.zPosition = 8
         addChild(water)
@@ -419,7 +419,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure tree
     private func spawnTree(atPosition position: CGPoint) -> SKSpriteNode {
-        let treeArray = ["trees", "tree", "trees"]
+        let treeArray = [SpriteString.trees.rawValue, SpriteString.tree.rawValue, SpriteString.trees.rawValue]
         let rundomNumber = arc4random_uniform(2)
         let tree = SKSpriteNode(imageNamed: treeArray[Int(rundomNumber)])
         tree.position = position
@@ -554,8 +554,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure sprite of jump button
     private func setupJumpButton() {
-        jumpButton = SKSpriteNode(imageNamed: "jumpButton")
-        jumpButton.name = "jumpButton"
+        jumpButton = SKSpriteNode(imageNamed: SpriteString.jumpButton.rawValue)
+        jumpButton.name = SpriteString.jumpButton.rawValue
         let jumpButtonX = frame.midX / 0.1
         let jumpButtonY = frame.midY / 3.5
         jumpButton.position = CGPoint(x: jumpButtonX, y: jumpButtonY)
@@ -584,7 +584,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.position = CGPoint(x: 0, y: 0)
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
-        menuLayer.display(message: "🎄\n Merry Christmas!\n Let's run with Funny Santa!\n 🎅🏻".localized, score: nil)
+        menuLayer.display(message: "🎄 Merry Christmas! Let's run with Funny Santa! 🎅🏻".localized, score: nil)
         menuLayer.configureStartButton()
         addChild(menuLayer)
     }

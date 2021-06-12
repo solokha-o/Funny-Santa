@@ -45,6 +45,8 @@
 		DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */; };
 		DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908295250FC874001F1E7F /* WaterSplash.sks */; };
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
+		DBB065342674DA590047C5B3 /* SpriteString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB065332674DA590047C5B3 /* SpriteString.swift */; };
+		DBB065362674FDA90047C5B3 /* AudioString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB065352674FDA90047C5B3 /* AudioString.swift */; };
 		DBB56FF3254435460030A2E1 /* ho-ho-ho.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */; };
 		DBEBFC3125DC0EB0006725EC /* Funny_SantaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */; };
 		DBEBFC4125DC0F9B006725EC /* Funny_SantaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBFC4025DC0F9B006725EC /* Funny_SantaTests.swift */; };
@@ -95,6 +97,8 @@
 		DB8C7177251A1E5D002E254E /* backgroundSong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = backgroundSong.mp3; sourceTree = "<group>"; };
 		DB908295250FC874001F1E7F /* WaterSplash.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = WaterSplash.sks; sourceTree = "<group>"; };
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
+		DBB065332674DA590047C5B3 /* SpriteString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteString.swift; sourceTree = "<group>"; };
+		DBB065352674FDA90047C5B3 /* AudioString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioString.swift; sourceTree = "<group>"; };
 		DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ho-ho-ho.wav"; sourceTree = "<group>"; };
 		DBEBFC2E25DC0EAF006725EC /* Funny SantaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Funny SantaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funny_SantaUITests.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				DB5A610824DDD8DC001A724F /* GameScene.swift */,
 				DB5A611C24DDDA9B001A724F /* MenuLayer.swift */,
 				DB5A611A24DDD9FD001A724F /* Santa.swift */,
+				DBB065332674DA590047C5B3 /* SpriteString.swift */,
+				DBB065352674FDA90047C5B3 /* AudioString.swift */,
 				DB5A610A24DDD8DC001A724F /* GameViewController.swift */,
 			);
 			path = GameSceneFiles;
@@ -426,9 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB75659A265ECD2900F48A4F /* String+Localized.swift in Sources */,
+				DBB065342674DA590047C5B3 /* SpriteString.swift in Sources */,
 				DB5A610924DDD8DC001A724F /* GameScene.swift in Sources */,
 				DB5A611B24DDD9FD001A724F /* Santa.swift in Sources */,
 				DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */,
+				DBB065362674FDA90047C5B3 /* AudioString.swift in Sources */,
 				DB5A610B24DDD8DC001A724F /* GameViewController.swift in Sources */,
 				DB5A610324DDD8DC001A724F /* AppDelegate.swift in Sources */,
 			);

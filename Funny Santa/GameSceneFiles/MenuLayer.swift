@@ -11,16 +11,18 @@ import SpriteKit
 
 class MenuLayer: SKSpriteNode {
     
-    open var startButton = SKSpriteNode(imageNamed: "startButton")
+    open var startButton = SKSpriteNode(imageNamed: SpriteString.startButton.rawValue)
     //on display info about state of game and result
     open func display(message: String, score: Int?) {
         // display message about state of game
         let messageLable = SKLabelNode(text: message)
         messageLable.numberOfLines = 0
-        messageLable.horizontalAlignmentMode = .center
+        messageLable.preferredMaxLayoutWidth = frame.width
+        messageLable.lineBreakMode = .byWordWrapping
         let messageX = -frame.width
         let messageY = frame.height / 2.0
         messageLable.position = CGPoint(x: messageX, y: messageY)
+        messageLable.horizontalAlignmentMode = .center
         messageLable.verticalAlignmentMode = .center
         messageLable.fontName = "Courier-Bold"
         messageLable.fontSize = 42.0
@@ -48,7 +50,7 @@ class MenuLayer: SKSpriteNode {
     }
     //configure start button
     open func configureStartButton() {
-        startButton.name = "startButton"
+        startButton.name = SpriteString.startButton.rawValue
         let startButtonX = frame.midX
         let startButtonY = frame.midY / 3
         startButton.position = CGPoint(x: startButtonX, y: startButtonY)
