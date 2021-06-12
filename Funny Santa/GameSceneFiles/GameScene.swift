@@ -79,6 +79,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // add contact delegate
         physicsWorld.contactDelegate = self
         anchorPoint = CGPoint.zero
+        //get highScore from UserDefaults
+        highScore = UserDefaults.standard.integer(forKey: "highScore")
     }
     
     override func didMove(to view: SKView) {
@@ -89,6 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupJumpButton()
         setSnowing()
         setupLabels()
+        updateHighScoreTextLabel()
         buildSanta()
         santaAnimate()
         //display start game menu
@@ -324,6 +327,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             highScore = score
             print("High score now - \(highScore)")
             updateHighScoreTextLabel()
+            //save high score to UsedDefaults
+            UserDefaults.standard.set(highScore, forKey: "highScore")
         }
         stateGame = .notRunning
         //display game over menu
