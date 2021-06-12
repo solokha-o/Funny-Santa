@@ -208,16 +208,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func loadSantaImage() {
         for i in 1...10 {
             let imageName = SpriteString.santa.rawValue + String(i)
-            santaWalkingFrames.append(SKTexture(imageNamed: imageName))
+            let santaWalkingTexture = SKTexture(imageNamed: imageName)
+            santaWalkingTexture.preload {
+                print("Image Santa\(i) have been preload in texture.")
+            }
+            santaWalkingFrames.append(santaWalkingTexture)
         }
         print("Images for Santa walking are load: \(santaWalkingFrames)")
         let santaJumpTexture = SKTexture(imageNamed: SpriteString.santaJump.rawValue)
+        santaJumpTexture.preload {
+            print("Image Santa have been preload in texture.")
+        }
         santaJumpFrames.append(santaJumpTexture)
         print("Images for Santa jamp are load: \(santaJumpFrames)")
     }
     // build frame santa on scene
     private func buildSanta() {
         let firstTextureFrame = santaWalkingFrames.first
+        firstTextureFrame?.preload {
+            print("Image Santa have been preload in texture.")
+        }
         santa = Santa(texture: firstTextureFrame)
         santa.setupPhysicsBody()
         print("Santa had loaded.\n Texture - \(String(describing: santa.texture)).\n Santa position on screen: x - \(santa.position.x), y - \(santa.position.y).\n Santa scale: x - \(santa.xScale), y - \(santa.yScale).\n Santa size: height -  \(santa.size.height), width - \(santa.size.width).\n Santa anchor: \(santa.anchorPoint).\n Santa rotation: \(santa.zRotation)")
@@ -225,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //animate walking santa
     private func santaAnimate() {
-        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.075, resize: false, restore: true)
+        let santaWalkAnimate = SKAction.animate(with: santaWalkingFrames, timePerFrame: 0.075)
         santa.run(SKAction.repeatForever(santaWalkAnimate))
     }
     //animate Santa jump
