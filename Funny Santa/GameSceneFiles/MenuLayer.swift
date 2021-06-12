@@ -10,6 +10,8 @@ import UIKit
 import SpriteKit
 
 class MenuLayer: SKSpriteNode {
+    
+    open var startButton = SKSpriteNode(imageNamed: "startButton")
     //on display info about state of game and result
     open func display(message: String, score: Int?) {
         // display message about state of game
@@ -19,14 +21,14 @@ class MenuLayer: SKSpriteNode {
         let messageX = -frame.width
         let messageY = frame.height / 2.0
         messageLable.position = CGPoint(x: messageX, y: messageY)
-        messageLable.horizontalAlignmentMode = .center
+        messageLable.verticalAlignmentMode = .center
         messageLable.fontName = "Courier-Bold"
-        messageLable.fontSize = 48.0
+        messageLable.fontSize = 42.0
         messageLable.zPosition = 20
         addChild(messageLable)
         //animate text message
         let finalX = frame.width / 2.0
-        let messageAction = SKAction.moveTo(x: finalX, duration: 0.3)
+        let messageAction = SKAction.moveTo(x: finalX, duration: 0.5)
         messageLable.run(messageAction)
         //display score of game
         if let scoreToDisplay = score {
@@ -40,8 +42,17 @@ class MenuLayer: SKSpriteNode {
             scoreLabel.fontSize = 32.0
             scoreLabel.zPosition = 20
             addChild(scoreLabel)
-            let scoreAction = SKAction.moveTo(x: finalX, duration: 0.3)
+            let scoreAction = SKAction.moveTo(x: finalX, duration: 0.5)
             scoreLabel.run(scoreAction)
         }
+    }
+    //configure start button
+    open func configureStartButton() {
+        startButton.name = "startButton"
+        let startButtonX = frame.midX
+        let startButtonY = frame.midY / 3
+        startButton.position = CGPoint(x: startButtonX, y: startButtonY)
+        startButton.zPosition = 40.0
+        addChild(startButton)
     }
 }

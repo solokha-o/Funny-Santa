@@ -69,6 +69,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var kindBrick = KindBrick.main
     //create sprite of jump button
     private var jumpButton = SKSpriteNode()
+    //create menu layer
+    private var menuLayer = MenuLayer()
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
@@ -90,14 +92,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         buildSanta()
         santaAnimate()
         //display start game menu
-        let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
-        menuLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        menuLayer.position = CGPoint(x: 0, y: 0)
-        menuLayer.zPosition = 30
-        menuLayer.name = "menuLayer"
-        menuLayer.display(message: "Press on screen \n to start game".localized, score: nil)
-        addChild(menuLayer)
+        setStartMenu()
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -134,22 +129,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             let location = touch.location(in:self)
-            if let node = self.atPoint(location) as? SKSpriteNode, node.name == "jumpButton", santa.isOnGroud {
-                // if sprite is jumpButton configure jump of Santa
-                // sound when santa jump
-                run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
-                santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
-                santa.isOnGroud = false
-                print("Played sound of Santa's jump")
-                print("Santa jump.")
-                
-            } else {
-                if let menuLayer: SKSpriteNode = childNode(withName: "menuLayer") as? SKSpriteNode {
+            guard let node = self.atPoint(location) as? SKSpriteNode else { return }
+            switch node.name {
+                case "jumpButton":
+                    if santa.isOnGroud {
+                        // if sprite is jumpButton configure jump of Santa
+                        // sound when santa jump
+                        run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
+                        santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
+                        santa.isOnGroud = false
+                        print("Played sound of Santa's jump")
+                        print("Santa jump.")
+                    }
+                //if sprite is startButton configure start game
+                case "startButton":
                     menuLayer.removeFromParent()
                     startGame()
-                }
+                default:
+                    break
             }
-            
         }
     }
     // MARK:- SKPhysicsContactDelegate Methods
@@ -329,12 +327,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         stateGame = .notRunning
         //display game over menu
-        let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
-        let menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
-        menuLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        menuLayer.position = CGPoint(x: 0, y: 0)
-        menuLayer.zPosition = 30
-        menuLayer.name = "menuLayer"
+        menuLayer.removeAllChildren()
+        menuLayer.configureStartButton()
         menuLayer.display(message: "Game over!".localized, score: score)
         print("Game over!")
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
@@ -534,7 +528,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure sprite of jump button
     private func setupJumpButton() {
-        jumpButton = SKSpriteNode(imageNamed: "jump")
+        jumpButton = SKSpriteNode(imageNamed: "jumpButton")
         jumpButton.name = "jumpButton"
         let jumpButtonX = frame.midX / 0.1
         let jumpButtonY = frame.midY / 3.5
@@ -555,6 +549,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let appearJumpButton = SKAction.moveTo(x: jumpButtonX, duration: 0.5)
         addChild(jumpButton)
         jumpButton.run(appearJumpButton)
+    }
+    //setup start game menu
+    private func setStartMenu() {
+        let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
+        menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
+        menuLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        menuLayer.position = CGPoint(x: 0, y: 0)
+        menuLayer.zPosition = 30
+        menuLayer.name = "menuLayer"
+        menuLayer.display(message: "🎄\n Merry Christmas!\n Let's run with Funny Santa!\n 🎅🏻".localized, score: nil)
+        menuLayer.configureStartButton()
+        addChild(menuLayer)
     }
 }
 
