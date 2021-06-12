@@ -141,6 +141,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         run(SKAction.playSoundFileNamed("jump.wav", waitForCompletion: false))
                         santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                         santa.isOnGroud = false
+                        //animate press jump button
+                        let alfaAction = SKAction.fadeAlpha(to: 0.8, duration: 0.5)
+                        let scaleAction = SKAction.scale(to: 0.8, duration: 0.5)
+                        let animatePressJumpButton = SKAction.sequence([alfaAction, scaleAction])
+                        jumpButton.run(animatePressJumpButton)
                         print("Played sound of Santa's jump")
                         print("Santa jump.")
                     }
@@ -148,6 +153,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 case "startButton":
                     menuLayer.removeFromParent()
                     startGame()
+                default:
+                    break
+            }
+        }
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in:self)
+            guard let node = self.atPoint(location) as? SKSpriteNode else { return }
+            switch node.name {
+                case "jumpButton":
+                    //animate jump button when press done
+                    let alfaAction = SKAction.fadeAlpha(to: 1.0, duration: 0.5)
+                    let scaleAction = SKAction.scale(to: 1.0, duration: 0.5)
+                    let animatePressJumpButton = SKAction.sequence([alfaAction, scaleAction])
+                    jumpButton.run(animatePressJumpButton)
                 default:
                     break
             }
