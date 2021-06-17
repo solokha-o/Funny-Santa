@@ -8,7 +8,7 @@
 
 import Foundation
 //create enum with audio names
-enum AudioString: String {
+public enum AudioString: String {
     case candyTake = "candy.wav"
     case jumpSanta = "jump.wav"
     case gameOverSound = "gameOver.wav"

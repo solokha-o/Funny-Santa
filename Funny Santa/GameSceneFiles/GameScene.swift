@@ -17,6 +17,13 @@ public struct PhysicsCategory {
     static let tree : UInt32 = 0x1 << 4
 }
 
+//create enum state of game
+public enum StateGame {
+    case notRunning
+    case running
+    case pause
+}
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //create enum of brick level
@@ -24,11 +31,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case low = 0.0
         case high = 64.0
     }
-    //create enum state of game
-    enum StateGame {
-        case notRunning
-        case running
-    }
+    
     //create enum for kind of brick
     enum  KindBrick: String {
         case first = "firstBrick"
@@ -49,6 +52,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var brickSize = CGSize.zero
     // bricks speed
     private var scrollSpeed : CGFloat = 4.0
+    //instance for save speed before pause of game
+    private var scrollSpeedBeforePause : CGFloat = 4.0
     //create starting speed
     private let startingScrollSpeed : CGFloat = 4.0
     // create property for time interval update game
@@ -69,6 +74,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var kindBrick = KindBrick.main
     //create sprite of jump button
     private var jumpButton = SKSpriteNode()
+    //create sprite of pause button
+    private var pauseButton = SKSpriteNode()
     //create menu layer
     private var menuLayer = MenuLayer()
     
@@ -89,6 +96,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupBackground()
         setBackgroundSong()
         setupJumpButton()
+        setupPauseButton()
         setSnowing()
         setupLabels()
         updateHighScoreTextLabel()
@@ -142,9 +150,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         santa.physicsBody?.applyImpulse(CGVector(dx: 0.0, dy: 180.0))
                         santa.isOnGroud = false
                         //animate press jump button
-                        let alfaAction = SKAction.fadeAlpha(to: 0.8, duration: 0.5)
-                        let scaleAction = SKAction.scale(to: 0.8, duration: 0.5)
-                        let animatePressJumpButton = SKAction.sequence([alfaAction, scaleAction])
+                        let scaleAction = SKAction.scale(to: 0.5, duration: 0.3)
+                        let animatePressJumpButton = SKAction.sequence([scaleAction])
                         jumpButton.run(animatePressJumpButton)
                         print("Played sound of Santa's jump")
                         print("Santa jump.")
@@ -153,6 +160,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 case SpriteString.startButton.rawValue:
                     menuLayer.removeFromParent()
                     startGame()
+                //if sprite is pause button configure pause of game
+                case SpriteString.pauseButton.rawValue:
+                    removePauseButton()
+                    pauseGame()
                 default:
                     break
             }
@@ -165,10 +176,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             switch node.name {
                 case SpriteString.jumpButton.rawValue:
                     //animate jump button when press done
-                    let alfaAction = SKAction.fadeAlpha(to: 1.0, duration: 0.5)
-                    let scaleAction = SKAction.scale(to: 1.0, duration: 0.5)
-                    let animatePressJumpButton = SKAction.sequence([alfaAction, scaleAction])
+                    let scaleAction = SKAction.scale(to: 1.0, duration: 0.3)
+                    let animatePressJumpButton = SKAction.sequence([scaleAction])
                     jumpButton.run(animatePressJumpButton)
+                //if sprite is resume game configure resume of game
+                case SpriteString.resumeButton.rawValue:
+                    appearPauseButton()
+                    menuLayer.removeFromParent()
+                    menuLayer.removeAllChildren()
+                    stateGame = .running
+                    scrollSpeed = scrollSpeedBeforePause
                 default:
                     break
             }
@@ -336,8 +353,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stateGame = .running
         loadSantaImage()
         resetSanta()
-        //animate appear jump button on screen
+        //animate appear jump and pause buttons on screen
         appearJumpButton()
+        appearPauseButton()
         score = 0
         print("Score had began - \(score)")
         scrollSpeed = startingScrollSpeed
@@ -354,6 +372,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     // configure game over
     private func gameOver() {
+        //animate remove pause button from screen
+        removePauseButton()
         if score > highScore {
             highScore = score
             print("High score now - \(highScore)")
@@ -364,7 +384,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stateGame = .notRunning
         //display game over menu
         menuLayer.removeAllChildren()
-        menuLayer.configureStartButton()
+        menuLayer.configureButton(with: stateGame)
         menuLayer.display(message: "Game over!".localized, score: score)
         print("Game over!")
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
@@ -573,16 +593,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     //configure animate remove jump button from screen
     private func removeJumpButton() {
-        let moveButtonX = frame.midX / 0.1
-        let moveJumpButton = SKAction.moveTo(x: moveButtonX, duration: 0.5)
+        let jumpButtonX = frame.midX / 0.1
+        let moveJumpButton = SKAction.moveTo(x: jumpButtonX, duration: 0.3)
         let removeJumpButton = SKAction.removeFromParent()
         let moveAndRemoveJumpButton = SKAction.sequence([moveJumpButton, removeJumpButton])
         jumpButton.run(moveAndRemoveJumpButton)
     }
     //configure animate appear jump button on screen
     private func appearJumpButton() {
-        let jumpButtonX = frame.midX / 0.60
-        let appearJumpButton = SKAction.moveTo(x: jumpButtonX, duration: 0.5)
+        let jumpButtonX = frame.midX / 0.6
+        let appearJumpButton = SKAction.moveTo(x: jumpButtonX, duration: 0.3)
         addChild(jumpButton)
         jumpButton.run(appearJumpButton)
     }
@@ -595,7 +615,50 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
         menuLayer.display(message: "🎄 Merry Christmas! Let's run with Funny Santa! 🎅🏻".localized, score: nil)
-        menuLayer.configureStartButton()
+        menuLayer.configureButton(with: stateGame)
+        addChild(menuLayer)
+    }
+    //configure sprite of pause button
+    private func setupPauseButton() {
+        pauseButton = SKSpriteNode(imageNamed: SpriteString.pauseButton.rawValue)
+        pauseButton.name = SpriteString.pauseButton.rawValue
+        let pauseButtonX = frame.midX
+        let pauseButtonY = frame.midY / 3
+        pauseButton.position = CGPoint(x: pauseButtonX, y: pauseButtonY)
+        pauseButton.zPosition = 15.0
+    }
+    //configure animate remove pause button from screen
+    private func removePauseButton() {
+        let pauseButtonX = frame.midX
+        let pauseButtonY = frame.midY / 3
+        let movePauseButton = SKAction.move(to: CGPoint(x: pauseButtonX, y: pauseButtonY), duration: 0.3)
+        let removePauseButton = SKAction.removeFromParent()
+        let moveAndRemovePauseButton = SKAction.sequence([movePauseButton, removePauseButton])
+        pauseButton.run(moveAndRemovePauseButton)
+    }
+    //configure animate appear pause button on screen
+    private func appearPauseButton() {
+        let pauseButtonX = frame.midX / 4.0
+        let pauseButtonY = frame.midY / 0.6
+        let movePauseButton = SKAction.move(to: CGPoint(x: pauseButtonX, y: pauseButtonY), duration: 0.3)
+        let appearPauseButton = SKAction.sequence([movePauseButton])
+        addChild(pauseButton)
+        pauseButton.run(appearPauseButton)
+    }
+    //configure pause game
+    public func pauseGame() {
+        stateGame = .pause
+        scrollSpeedBeforePause = scrollSpeed
+        scrollSpeed = 0.0
+        lastUpdateTime = 0.0
+        menuLayer.removeAllChildren()
+        let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
+        menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
+        menuLayer.anchorPoint = CGPoint(x: 0, y: 0)
+        menuLayer.position = CGPoint(x: 0, y: 0)
+        menuLayer.zPosition = 30
+        menuLayer.display(message: "Resume.".localized, score: score)
+        menuLayer.configureButton(with: stateGame)
         addChild(menuLayer)
     }
 }

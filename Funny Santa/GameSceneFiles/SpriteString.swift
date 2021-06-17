@@ -15,7 +15,9 @@ public enum SpriteString: String {
     case jumpButton = "jumpButton"
     case santaJump = "SantaJump"
     case startButton = "startButton"
+    case resumeButton = "resumeButton"
     case tree = "tree"
     case trees = "trees"
     case water = "water"
+    case pauseButton = "pauseButton"
 }

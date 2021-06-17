@@ -11,7 +11,7 @@ import SpriteKit
 
 class MenuLayer: SKSpriteNode {
     
-    open var startButton = SKSpriteNode(imageNamed: SpriteString.startButton.rawValue)
+    open var button = SKSpriteNode()
     //on display info about state of game and result
     open func display(message: String, score: Int?) {
         // display message about state of game
@@ -30,7 +30,7 @@ class MenuLayer: SKSpriteNode {
         addChild(messageLable)
         //animate text message
         let finalX = frame.width / 2.0
-        let messageAction = SKAction.moveTo(x: finalX, duration: 0.5)
+        let messageAction = SKAction.moveTo(x: finalX, duration: 0.3)
         messageLable.run(messageAction)
         //display score of game
         if let scoreToDisplay = score {
@@ -44,17 +44,23 @@ class MenuLayer: SKSpriteNode {
             scoreLabel.fontSize = 32.0
             scoreLabel.zPosition = 20
             addChild(scoreLabel)
-            let scoreAction = SKAction.moveTo(x: finalX, duration: 0.5)
+            let scoreAction = SKAction.moveTo(x: finalX, duration: 0.3)
             scoreLabel.run(scoreAction)
         }
     }
-    //configure start button
-    open func configureStartButton() {
-        startButton.name = SpriteString.startButton.rawValue
+    //configure start/resume button
+    open func configureButton(with gameState: StateGame) {
+        if gameState == .pause {
+            button = SKSpriteNode(imageNamed: SpriteString.resumeButton.rawValue)
+            button.name = SpriteString.resumeButton.rawValue
+        } else {
+            button = SKSpriteNode(imageNamed: SpriteString.startButton.rawValue)
+            button.name = SpriteString.startButton.rawValue
+        }
         let startButtonX = frame.midX
         let startButtonY = frame.midY / 3
-        startButton.position = CGPoint(x: startButtonX, y: startButtonY)
-        startButton.zPosition = 40.0
-        addChild(startButton)
+        button.position = CGPoint(x: startButtonX, y: startButtonY)
+        button.zPosition = 40.0
+        addChild(button)
     }
 }

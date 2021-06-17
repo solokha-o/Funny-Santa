@@ -72,13 +72,13 @@ class GameViewController: UIViewController {
             // Create the request
             let uuidString = UUID().uuidString
             let request = UNNotificationRequest(identifier: uuidString,
-                        content: content, trigger: trigger)
+                                                content: content, trigger: trigger)
             // Schedule the request with the system.
             let notificationCenter = UNUserNotificationCenter.current()
             notificationCenter.add(request) { (error) in
-               if error != nil {
-                  print("Error with creating notifications: \(error!)")
-               }
+                if error != nil {
+                    print("Error with creating notifications: \(error!)")
+                }
             }
             hour += 4
         }
