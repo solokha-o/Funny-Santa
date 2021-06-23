@@ -34,6 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         //removing all notification that was created before
         center.removeAllPendingNotificationRequests()
+        // configure first launch app
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if UserDefaults.standard.bool(forKey: "onboarding") {
+            window?.rootViewController = storyboard.instantiateViewController(identifier: "GameViewController")
+        } else {
+            window?.rootViewController = storyboard.instantiateViewController(identifier: "OnboardingViewController")
+        }
+        window?.makeKeyAndVisible()
         return true
     }
 

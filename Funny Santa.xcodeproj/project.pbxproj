@@ -47,6 +47,10 @@
 		DB908298251253F4001F1E7F /* Snowing.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB908297251253F4001F1E7F /* Snowing.sks */; };
 		DBB065342674DA590047C5B3 /* SpriteString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB065332674DA590047C5B3 /* SpriteString.swift */; };
 		DBB065362674FDA90047C5B3 /* AudioString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB065352674FDA90047C5B3 /* AudioString.swift */; };
+		DBB186CA2680CD0300A44D98 /* ModelFirstLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB186C62680CD0300A44D98 /* ModelFirstLaunch.swift */; };
+		DBB186CB2680CD0300A44D98 /* FirstLaunchPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB186C72680CD0300A44D98 /* FirstLaunchPageViewController.swift */; };
+		DBB186CC2680CD0300A44D98 /* FirstLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB186C82680CD0300A44D98 /* FirstLaunchViewController.swift */; };
+		DBB186CD2680CD0300A44D98 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB186C92680CD0300A44D98 /* OnboardingViewController.swift */; };
 		DBB56FF3254435460030A2E1 /* ho-ho-ho.wav in Resources */ = {isa = PBXBuildFile; fileRef = DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */; };
 		DBEBFC3125DC0EB0006725EC /* Funny_SantaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */; };
 		DBEBFC4125DC0F9B006725EC /* Funny_SantaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBFC4025DC0F9B006725EC /* Funny_SantaTests.swift */; };
@@ -99,6 +103,13 @@
 		DB908297251253F4001F1E7F /* Snowing.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Snowing.sks; sourceTree = "<group>"; };
 		DBB065332674DA590047C5B3 /* SpriteString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteString.swift; sourceTree = "<group>"; };
 		DBB065352674FDA90047C5B3 /* AudioString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioString.swift; sourceTree = "<group>"; };
+		DBB186C62680CD0300A44D98 /* ModelFirstLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelFirstLaunch.swift; sourceTree = "<group>"; };
+		DBB186C72680CD0300A44D98 /* FirstLaunchPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchPageViewController.swift; sourceTree = "<group>"; };
+		DBB186C82680CD0300A44D98 /* FirstLaunchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewController.swift; sourceTree = "<group>"; };
+		DBB186C92680CD0300A44D98 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		DBB186CF26838E4700A44D98 /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/Main.strings"; sourceTree = "<group>"; };
+		DBB186D026838E4800A44D98 /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		DBB186D126838E4900A44D98 /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DBB56FF2254435460030A2E1 /* ho-ho-ho.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "ho-ho-ho.wav"; sourceTree = "<group>"; };
 		DBEBFC2E25DC0EAF006725EC /* Funny SantaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Funny SantaUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBEBFC3025DC0EB0006725EC /* Funny_SantaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funny_SantaUITests.swift; sourceTree = "<group>"; };
@@ -145,8 +156,7 @@
 			children = (
 				DB4E24672590C5280072E79E /* GameScene.sks */,
 				DB5A610824DDD8DC001A724F /* GameScene.swift */,
-				DB5A611C24DDDA9B001A724F /* MenuLayer.swift */,
-				DB5A611A24DDD9FD001A724F /* Santa.swift */,
+				DBB186CE2680F5FD00A44D98 /* Sprites */,
 				DBB065332674DA590047C5B3 /* SpriteString.swift */,
 				DBB065352674FDA90047C5B3 /* AudioString.swift */,
 				DB5A610A24DDD8DC001A724F /* GameViewController.swift */,
@@ -205,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				DB5A610224DDD8DC001A724F /* AppDelegate.swift */,
+				DBB186C52680CD0300A44D98 /* OnboardingViewController */,
 				DB4E24632590C4060072E79E /* GameSceneFiles */,
 				DB4E24642590C4300072E79E /* Partical Emitter */,
 				DB4E24652590C4520072E79E /* Sounds */,
@@ -230,6 +241,26 @@
 			children = (
 			);
 			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
+		DBB186C52680CD0300A44D98 /* OnboardingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DBB186C62680CD0300A44D98 /* ModelFirstLaunch.swift */,
+				DBB186C72680CD0300A44D98 /* FirstLaunchPageViewController.swift */,
+				DBB186C82680CD0300A44D98 /* FirstLaunchViewController.swift */,
+				DBB186C92680CD0300A44D98 /* OnboardingViewController.swift */,
+			);
+			path = OnboardingViewController;
+			sourceTree = "<group>";
+		};
+		DBB186CE2680F5FD00A44D98 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				DB5A611A24DDD9FD001A724F /* Santa.swift */,
+				DB5A611C24DDDA9B001A724F /* MenuLayer.swift */,
+			);
+			path = Sprites;
 			sourceTree = "<group>";
 		};
 		DBEBFC2F25DC0EB0006725EC /* Funny SantaUITests */ = {
@@ -354,6 +385,7 @@
 				en,
 				Base,
 				"fi-FI",
+				"uk-UA",
 			);
 			mainGroup = DB5A60F624DDD8DC001A724F;
 			productRefGroup = DB5A610024DDD8DC001A724F /* Products */;
@@ -431,14 +463,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBB186CC2680CD0300A44D98 /* FirstLaunchViewController.swift in Sources */,
 				DB75659A265ECD2900F48A4F /* String+Localized.swift in Sources */,
 				DBB065342674DA590047C5B3 /* SpriteString.swift in Sources */,
 				DB5A610924DDD8DC001A724F /* GameScene.swift in Sources */,
 				DB5A611B24DDD9FD001A724F /* Santa.swift in Sources */,
 				DB5A611D24DDDA9B001A724F /* MenuLayer.swift in Sources */,
+				DBB186CB2680CD0300A44D98 /* FirstLaunchPageViewController.swift in Sources */,
+				DBB186CD2680CD0300A44D98 /* OnboardingViewController.swift in Sources */,
 				DBB065362674FDA90047C5B3 /* AudioString.swift in Sources */,
 				DB5A610B24DDD8DC001A724F /* GameViewController.swift in Sources */,
 				DB5A610324DDD8DC001A724F /* AppDelegate.swift in Sources */,
+				DBB186CA2680CD0300A44D98 /* ModelFirstLaunch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +528,7 @@
 			children = (
 				DB5A610D24DDD8DC001A724F /* Base */,
 				DB7565A02660102800F48A4F /* fi-FI */,
+				DBB186CF26838E4700A44D98 /* uk-UA */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -502,6 +539,7 @@
 				DB5A611224DDD8DE001A724F /* Base */,
 				DB7565A12660102800F48A4F /* fi-FI */,
 				DB7565A4266141D100F48A4F /* en */,
+				DBB186D026838E4800A44D98 /* uk-UA */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -511,6 +549,7 @@
 			children = (
 				DB75659E265ECD4900F48A4F /* en */,
 				DB7565A22660102800F48A4F /* fi-FI */,
+				DBB186D126838E4900A44D98 /* uk-UA */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

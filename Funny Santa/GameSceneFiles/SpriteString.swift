@@ -20,4 +20,5 @@ public enum SpriteString: String {
     case trees = "trees"
     case water = "water"
     case pauseButton = "pauseButton"
+    case infoButton = "infoButton"
 }

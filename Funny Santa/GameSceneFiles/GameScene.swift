@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 //get physics category to objects of game
 public struct PhysicsCategory {
     static let santa : UInt32 = 0x1 << 0
@@ -164,6 +165,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 case SpriteString.pauseButton.rawValue:
                     removePauseButton()
                     pauseGame()
+                //if sprite is resume button configure resume of game
+                case SpriteString.resumeButton.rawValue:
+                    appearPauseButton()
+                    menuLayer.removeFromParent()
+                    menuLayer.removeAllChildren()
+                    stateGame = .running
+                    scrollSpeed = scrollSpeedBeforePause
+                //if sprite is info button it show info about game
+                case SpriteString.infoButton.rawValue:
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let onboardingVC = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController")
+                    onboardingVC.view.frame = (self.view?.frame)!
+                    onboardingVC.view.layoutIfNeeded()
+                    UIView.transition(with: self.view!,
+                                      duration: 0.3,
+                                      options: .transitionFlipFromTop,
+                                      animations:
+                                        {
+                                            self.view?.window?.rootViewController = onboardingVC
+                                        })
                 default:
                     break
             }
@@ -179,13 +200,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let scaleAction = SKAction.scale(to: 1.0, duration: 0.3)
                     let animatePressJumpButton = SKAction.sequence([scaleAction])
                     jumpButton.run(animatePressJumpButton)
-                //if sprite is resume game configure resume of game
-                case SpriteString.resumeButton.rawValue:
-                    appearPauseButton()
-                    menuLayer.removeFromParent()
-                    menuLayer.removeAllChildren()
-                    stateGame = .running
-                    scrollSpeed = scrollSpeedBeforePause
                 default:
                     break
             }
@@ -384,7 +398,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         stateGame = .notRunning
         //display game over menu
         menuLayer.removeAllChildren()
-        menuLayer.configureButton(with: stateGame)
+        menuLayer.configureStartResumeButton(with: stateGame)
         menuLayer.display(message: "Game over!".localized, score: score)
         print("Game over!")
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
@@ -615,7 +629,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.zPosition = 30
         menuLayer.name = "menuLayer"
         menuLayer.display(message: "🎄 Merry Christmas! Let's run with Funny Santa! 🎅🏻".localized, score: nil)
-        menuLayer.configureButton(with: stateGame)
+        menuLayer.configureStartResumeButton(with: stateGame)
+        menuLayer.configureInfoButton()
         addChild(menuLayer)
     }
     //configure sprite of pause button
@@ -658,7 +673,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         menuLayer.position = CGPoint(x: 0, y: 0)
         menuLayer.zPosition = 30
         menuLayer.display(message: "Resume.".localized, score: score)
-        menuLayer.configureButton(with: stateGame)
+        menuLayer.configureStartResumeButton(with: stateGame)
         addChild(menuLayer)
     }
 }
