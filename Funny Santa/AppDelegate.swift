@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // configure first launch app
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if UserDefaults.standard.bool(forKey: "onboarding") {
-            window?.rootViewController = storyboard.instantiateViewController(identifier: "GameViewController")
+            window?.rootViewController = storyboard.instantiateViewController(identifier: "MainGameViewController")
         } else {
             window?.rootViewController = storyboard.instantiateViewController(identifier: "OnboardingViewController")
         }

@@ -52,7 +52,7 @@ class OnboardingViewController: UIViewController {
         // configure button to skip tutorial
         UserDefaults.standard.set(true, forKey: "onboarding")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let VC = storyboard?.instantiateViewController(identifier: "GameViewController")
+        let VC = storyboard?.instantiateViewController(identifier: "MainGameViewController")
         appDelegate.window?.rootViewController = VC
     }
     // configure UIPageControl

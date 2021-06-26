@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class MenuLayer: SKSpriteNode {
+class MainMenu: SKSpriteNode {
     //create start-resume button
     open var startResumeButton = SKSpriteNode()
     //create info button

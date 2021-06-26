@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Game View Controller-->
+        <!--Main Game View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController storyboardIdentifier="GameViewController" id="BV1-FR-VrT" customClass="GameViewController" customModule="Funny_Santa" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainGameViewController" id="BV1-FR-VrT" customClass="MainGameViewController" customModule="Funny_Santa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
         <!--Onboarding View Controller-->
         <scene sceneID="WuU-LJ-ELK">
             <objects>
-                <viewController storyboardIdentifier="OnboardingViewController" id="k1R-rW-fpe" customClass="OnboardingViewController" customModule="InternetShopKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="k1R-rW-fpe" customClass="OnboardingViewController" customModule="Funny_Santa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gnu-1V-W5L">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,13 +35,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GJ-xQ-tGg">
-                                        <rect key="frame" x="0.0" y="0.0" width="896" height="336.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="896" height="356.5"/>
                                         <connections>
                                             <segue destination="5KE-ah-LlC" kind="embed" identifier="ToPageVC" id="uS4-e7-PDQ"/>
                                         </connections>
                                     </containerView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="vlR-ch-W4i">
-                                        <rect key="frame" x="0.0" y="336.5" width="896" height="40"/>
+                                        <rect key="frame" x="0.0" y="356.5" width="896" height="27.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="oyX-nQ-yzA"/>
@@ -53,7 +53,7 @@
                                         </connections>
                                     </pageControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUK-uw-Guj">
-                                        <rect key="frame" x="0.0" y="376.5" width="896" height="37.5"/>
+                                        <rect key="frame" x="0.0" y="384" width="896" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="50" id="qPk-BT-kWB"/>
@@ -89,7 +89,7 @@
         <!--First Launch Page View Controller-->
         <scene sceneID="QTf-NY-aqL">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5KE-ah-LlC" customClass="FirstLaunchPageViewController" customModule="InternetShopKeeper" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="5KE-ah-LlC" customClass="FirstLaunchPageViewController" customModule="Funny_Santa" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HaE-hN-kUe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2294" y="56"/>
@@ -97,7 +97,7 @@
         <!--First Launch View Controller-->
         <scene sceneID="qrf-KP-s3X">
             <objects>
-                <viewController storyboardIdentifier="FirstLaunchViewController" id="4gq-ny-jSX" customClass="FirstLaunchViewController" customModule="InternetShopKeeper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FirstLaunchViewController" id="4gq-ny-jSX" customClass="FirstLaunchViewController" customModule="Funny_Santa" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ggy-zy-rb8">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

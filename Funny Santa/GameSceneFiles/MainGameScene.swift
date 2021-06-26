@@ -25,7 +25,7 @@ public enum StateGame {
     case pause
 }
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class MainGameScene: SKScene, SKPhysicsContactDelegate {
     
     //create enum of brick level
     enum BrickLevel: CGFloat {
@@ -78,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //create sprite of pause button
     private var pauseButton = SKSpriteNode()
     //create menu layer
-    private var menuLayer = MenuLayer()
+    private var mainMenu = MainMenu()
     
     override func sceneDidLoad() {
         super.sceneDidLoad()
@@ -159,7 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     }
                 //if sprite is startButton configure start game
                 case SpriteString.startButton.rawValue:
-                    menuLayer.removeFromParent()
+                    mainMenu.removeFromParent()
                     startGame()
                 //if sprite is pause button configure pause of game
                 case SpriteString.pauseButton.rawValue:
@@ -168,8 +168,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 //if sprite is resume button configure resume of game
                 case SpriteString.resumeButton.rawValue:
                     appearPauseButton()
-                    menuLayer.removeFromParent()
-                    menuLayer.removeAllChildren()
+                    mainMenu.removeFromParent()
+                    mainMenu.removeAllChildren()
                     stateGame = .running
                     scrollSpeed = scrollSpeedBeforePause
                 //if sprite is info button it show info about game
@@ -397,9 +397,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         stateGame = .notRunning
         //display game over menu
-        menuLayer.removeAllChildren()
-        menuLayer.configureStartResumeButton(with: stateGame)
-        menuLayer.display(message: "Game over!".localized, score: score)
+        mainMenu.removeAllChildren()
+        mainMenu.configureStartResumeButton(with: stateGame)
+        mainMenu.display(message: "Game over!".localized, score: score)
         print("Game over!")
         run(SKAction.playSoundFileNamed("gameOver", waitForCompletion: false))
         print("Sound of game over play.")
@@ -407,7 +407,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             self.santaWalkingFrames.removeAll()
             self.santaJumpFrames.removeAll()
         }
-        addChild(menuLayer)
+        addChild(mainMenu)
         //animate remove jump button from screen
         removeJumpButton()
     }
@@ -623,15 +623,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //setup start game menu
     private func setStartMenu() {
         let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
-        menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
-        menuLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        menuLayer.position = CGPoint(x: 0, y: 0)
-        menuLayer.zPosition = 30
-        menuLayer.name = "menuLayer"
-        menuLayer.display(message: "🎄 Merry Christmas! Let's run with Funny Santa! 🎅🏻".localized, score: nil)
-        menuLayer.configureStartResumeButton(with: stateGame)
-        menuLayer.configureInfoButton()
-        addChild(menuLayer)
+        mainMenu = MainMenu(color: menuBackgroundColor, size: frame.size)
+        mainMenu.anchorPoint = CGPoint(x: 0, y: 0)
+        mainMenu.position = CGPoint(x: 0, y: 0)
+        mainMenu.zPosition = 30
+        mainMenu.name = "menuLayer"
+        mainMenu.display(message: "🎄 Merry Christmas! Let's run with Funny Santa! 🎅🏻".localized, score: nil)
+        mainMenu.configureStartResumeButton(with: stateGame)
+        mainMenu.configureInfoButton()
+        addChild(mainMenu)
     }
     //configure sprite of pause button
     private func setupPauseButton() {
@@ -666,15 +666,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scrollSpeedBeforePause = scrollSpeed
         scrollSpeed = 0.0
         lastUpdateTime = 0.0
-        menuLayer.removeAllChildren()
+        mainMenu.removeAllChildren()
         let menuBackgroundColor = UIColor.black.withAlphaComponent(0.4)
-        menuLayer = MenuLayer(color: menuBackgroundColor, size: frame.size)
-        menuLayer.anchorPoint = CGPoint(x: 0, y: 0)
-        menuLayer.position = CGPoint(x: 0, y: 0)
-        menuLayer.zPosition = 30
-        menuLayer.display(message: "Resume.".localized, score: score)
-        menuLayer.configureStartResumeButton(with: stateGame)
-        addChild(menuLayer)
+        mainMenu = MainMenu(color: menuBackgroundColor, size: frame.size)
+        mainMenu.anchorPoint = CGPoint(x: 0, y: 0)
+        mainMenu.position = CGPoint(x: 0, y: 0)
+        mainMenu.zPosition = 30
+        mainMenu.display(message: "Resume.".localized, score: score)
+        mainMenu.configureStartResumeButton(with: stateGame)
+        addChild(mainMenu)
     }
 }
 
