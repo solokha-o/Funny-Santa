@@ -24,7 +24,7 @@
  - requires xcode 11.0 +
 
   
-## Includes ( ALL SWIFTUI )
+## Includes
 - SpriteKit Framework
 - Custom Modifiers 
 
