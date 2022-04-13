@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D93B98182806BEF7007342CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93B98172806BEF7007342CD /* GoogleService-Info.plist */; };
 		D93B981B2806C0A0007342CD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = D93B981A2806C0A0007342CD /* FirebaseAnalytics */; };
 		D93B981D2806C0A0007342CD /* FirebaseAnalyticsSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = D93B981C2806C0A0007342CD /* FirebaseAnalyticsSwift-Beta */; };
+		D93B981F2806C4F1007342CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D93B981E2806C4F1007342CD /* GoogleService-Info.plist */; };
 		DB3AD9AE2668856E00ED63F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB3AD9AD2668856E00ED63F3 /* Assets.xcassets */; };
 		DB4E24682590C5280072E79E /* MainGameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DB4E24672590C5280072E79E /* MainGameScene.sks */; };
 		DB5204772518C2DC0071A837 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = DB5204762518C2DB0071A837 /* jump.wav */; };
@@ -77,7 +77,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D93B98172806BEF7007342CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D93B981E2806C4F1007342CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB3AD9AD2668856E00ED63F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB4E24672590C5280072E79E /* MainGameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MainGameScene.sks; sourceTree = "<group>"; };
 		DB5204762518C2DB0071A837 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 				DB5A610C24DDD8DC001A724F /* Main.storyboard */,
 				DB5A611124DDD8DE001A724F /* LaunchScreen.storyboard */,
 				DB5A611424DDD8DE001A724F /* Info.plist */,
-				D93B98172806BEF7007342CD /* GoogleService-Info.plist */,
+				D93B981E2806C4F1007342CD /* GoogleService-Info.plist */,
 			);
 			path = "Funny Santa";
 			sourceTree = "<group>";
@@ -426,13 +426,13 @@
 				DB3AD9AE2668856E00ED63F3 /* Assets.xcassets in Resources */,
 				DB5204812518C9C10071A837 /* gameOver.wav in Resources */,
 				DB8C7178251A1E5D002E254E /* backgroundSong.mp3 in Resources */,
-				D93B98182806BEF7007342CD /* GoogleService-Info.plist in Resources */,
 				DB908296250FC874001F1E7F /* WaterSplash.sks in Resources */,
 				DB5A612324DDDBE3001A724F /* candy.wav in Resources */,
 				DB6E4A2024F57635007E4098 /* SnowSplash.sks in Resources */,
 				DB5A611324DDD8DE001A724F /* LaunchScreen.storyboard in Resources */,
 				DB52047E2518C5C80071A837 /* waterSplash.wav in Resources */,
 				DB4E24682590C5280072E79E /* MainGameScene.sks in Resources */,
+				D93B981F2806C4F1007342CD /* GoogleService-Info.plist in Resources */,
 				DB908298251253F4001F1E7F /* Snowing.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,7 +705,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CoolSanta.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-Santa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -727,7 +727,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CoolSanta.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "Oleksandr-Solokha.Funny-Santa";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

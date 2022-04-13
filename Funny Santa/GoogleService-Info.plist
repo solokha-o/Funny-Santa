@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>583657533765-frblbivsqr4gihhvcshq5sag17pvn2gc.apps.googleusercontent.com</string>
+	<string>583657533765-15uggj37f1thif79gld804vmus0g82r9.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.583657533765-frblbivsqr4gihhvcshq5sag17pvn2gc</string>
+	<string>com.googleusercontent.apps.583657533765-15uggj37f1thif79gld804vmus0g82r9</string>
 	<key>API_KEY</key>
 	<string>AIzaSyClKy5drAIlRA8FjqZ759HyRO3yqBqYXZ8</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.CoolSanta.app</string>
+	<string>Oleksandr-Solokha.Funny-Santa</string>
 	<key>PROJECT_ID</key>
 	<string>cool-santa---ios</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:583657533765:ios:264c9f6cb802440cf98e2c</string>
+	<string>1:583657533765:ios:8f031b3ce72b5c13f98e2c</string>
 </dict>
 </plist>
