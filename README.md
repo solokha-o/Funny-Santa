@@ -2,7 +2,7 @@
  <img src ="/Funny Santa/Assets.xcassets/AppIcon.appiconset/120.png"  />      
  </p>
  
-# Funny-Santa
+# Cool Santa
 
 #### It is a game what can run on iPhone and iPad.
 
